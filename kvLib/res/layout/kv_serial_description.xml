@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Все серии"
+        android:textSize="@dimen/text_size"
+         >
+        
+    <requestFocus />
+    </Button>
+
+    
+    
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/button"
+        android:layout_alignParentRight="true"  
+        android:layout_alignParentTop="true"
+        android:padding="10dip" >
+	<RelativeLayout 
+    	android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/image_size_big"
+        android:layout_height="@dimen/image_size_big"
+        android:layout_alignParentRight="true"
+         android:layout_alignParentTop="true"
+        android:scaleType="fitStart" >
+    </ImageView>
+            <TextView 
+        android:id="@+id/name"
+        android:paddingRight="@dimen/main_padding"
+        android:lines="3"
+        android:ellipsize="end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="Название сериала длинное название сериала"
+        android:layout_toLeftOf="@id/image"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textSize="@dimen/text_size" 
+        android:layout_alignBottom="@id/image"
+        />
+            
+        <View
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:background="?android:attr/listDivider"
+    		android:layout_below="@id/image"
+    		android:layout_marginTop="@dimen/main_padding"
+    		android:layout_marginBottom="@dimen/main_padding"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_marginTop="@dimen/main_padding"
+            android:paddingTop="@dimen/main_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:textSize="@dimen/text_size_medium"  />
+
+</RelativeLayout>
+   
+
+        
+    </ScrollView>
+
+
+</RelativeLayout>

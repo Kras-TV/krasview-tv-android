@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="item_divider" format="reference|color" />
+    <attr name="item_common_pressed" format="reference|color" />
+    <attr name="item_common_selected" format="reference|color" />
+    <attr name="background_menu_divider" format="reference|color" />
+    <attr name="background_menu" format="reference|color" />
+    <attr name="font_default" format="reference|color" />
+    <attr name="font_light" format="reference|color" />
+    <attr name="orange" format="reference|color" />
+    <attr name="darkorange" format="reference|color" />
+    
+    <declare-styleable name="FontTextView">
+		<attr name="font" format="string" />
+	</declare-styleable>
+	 <declare-styleable name="VideoView">
+    </declare-styleable>
+    <declare-styleable name="ScalingVideoView">
+    </declare-styleable>
+    <declare-styleable name="KVTime">
+    </declare-styleable>
+    <declare-styleable name="KVFilling">
+    </declare-styleable>
+    <declare-styleable name="TheMissingTabWidget">
+        <attr name="pictures_in_landscape_above" format="boolean" />
+    </declare-styleable>
+
+</resources>

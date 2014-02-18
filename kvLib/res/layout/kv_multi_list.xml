@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ru.krasview.multi.widget.MyListViewWrapper
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/list"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent">
+</ru.krasview.multi.widget.MyListViewWrapper>
+<!--  android:layout_width="@dimen/list_width" -->

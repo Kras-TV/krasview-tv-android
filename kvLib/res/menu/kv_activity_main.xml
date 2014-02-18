@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/new_game"
+          android:title="Настройки"/>
+    <!--  android:title="Настройки системы" /-->
+    <item android:id="@+id/menuUpdateChannels"
+          android:title="Обновить список каналов" />
+    <item android:id="@+id/changeInterface" 
+          android:title="Смотреть сериалы"/>
+    <item android:id="@+id/exit" 
+          android:title="Выход"/>
+    <item 
+       	  android:id="@+id/kv_login_item"
+          android:title="Логин"
+          android:showAsAction="always" />
+</menu>

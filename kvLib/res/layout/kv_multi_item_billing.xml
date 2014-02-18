@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:id="@+id/top"
+ >
+ <RelativeLayout
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="horizontal"
+ android:padding="@dimen/main_padding"
+ >
+
+    <View
+        android:id="@+id/image"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:layout_alignParentRight="true"           
+        android:scaleType="fitXY"     
+        android:visibility="invisible"
+        android:background="#88505050" 
+        />  
+       
+             
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        
+        android:text="TextView"
+        android:textSize="@dimen/text_size" 
+        android:layout_alignBottom="@id/image"
+        android:gravity="center_vertical" 
+        android:layout_marginRight ="10dp"
+        android:duplicateParentState="true"
+        android:lines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id = "@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/text_size" 
+        android:text="цена"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginRight="8dp"/>
+    <TextView
+        android:id = "@+id/productType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/txt"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/text_size_medium"
+        android:text="тип"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginRight="8dp"/>
+</RelativeLayout>
+</RelativeLayout>

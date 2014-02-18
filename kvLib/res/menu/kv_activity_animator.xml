@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item 
+       	  android:id="@+id/kv_home_item"
+          android:title="Домой"
+          android:showAsAction="always"
+          android:icon="@drawable/ic_new_home" />
+     <item 
+       	  android:id="@+id/kv_refresh_item"
+          android:title="Обновить"
+          android:showAsAction="always"
+          android:icon="@drawable/ic_new_refresh"/>
+     <item 
+       	  android:id="@+id/kv_search_item"
+          android:title="Поиск"
+          android:showAsAction="always|collapseActionView"
+          android:actionLayout="@layout/kv_search"
+          android:icon="@drawable/ic_new_search"/>
+     
+     <item android:id="@+id/new_game"
+          android:title="Настройки"/>
+   
+    
+    <item 
+       	  android:id="@+id/kv_login_item"
+          android:title="Профиль"
+          android:showAsAction="withText|ifRoom"
+          android:icon="@drawable/ic_new_login" />
+    
+    <item android:id="@+id/exit"
+          android:title="Выход"/>
+</menu>

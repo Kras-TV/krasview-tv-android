@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--dimen name="image_size_small">81dip</dimen>
+    <dimen name="image_size">108dip</dimen>
+    <dimen name="image_size_big">162dip</dimen>
+    <dimen name="text_size">25sp</dimen>
+  	<dimen name="text_size_small">16sp</dimen>
+   	<dimen name="text_size_medium">20sp</dimen-->
+   	<dimen name="main_padding">10dip</dimen>
+</resources>

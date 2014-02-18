@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+ <RelativeLayout
+      	xmlns:android="http://schemas.android.com/apk/res/android"
+      	android:id="@+id/kv_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+   		<ru.krasview.player.VLC.VideoViewVLC
+   		    android:id="@+id/kv_video_video"
+   		    android:layout_width="match_parent"
+   		    android:layout_height="match_parent"
+   		    android:visibility="visible"
+   		    android:layout_centerInParent="true"
+   		    />
+   		    
+  		<ProgressBar
+  		    android:id="@+id/kv_video_progress"
+  		    android:layout_width="wrap_content"
+  		    android:layout_height="wrap_content"
+  		    android:layout_centerInParent="true"
+  		    android:indeterminateDrawable="@drawable/kv_kdt"
+  		    android:visibility = "gone"/>
+  		<ImageView
+  		    android:id="@+id/kv_video_pause"
+  		    
+  		    android:layout_width="200dp"
+  		    android:layout_height="200dp"
+  		    android:src="@drawable/kv_pause"
+  		    android:layout_centerInParent="true"
+  		    android:visibility="gone" />
+  		 		      		
+  		<TextView
+  		    android:id="@+id/kv_video_text"
+  		    android:layout_width="wrap_content"
+  		    android:layout_height="wrap_content"
+  		    android:layout_alignParentTop="true"
+  		    android:layout_centerHorizontal="true"
+  		    android:layout_margin="10dp"
+  		    android:visibility = "gone"/>
+
+     </RelativeLayout>

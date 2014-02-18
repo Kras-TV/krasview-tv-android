@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="fill_parent"
+  android:layout_height="match_parent"
+  android:id="@+id/listItem" 
+  >
+  
+      <ImageView 
+      android:layout_width="wrap_content"
+  	  android:layout_height="wrap_content"
+      android:id="@+id/img"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentRight="true"
+      android:scaleType="fitXY"
+      />
+  
+<ru.krasview.tv.service.FontTextView
+    android:id="@+id/text1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    android:layout_toLeftOf="@id/img"
+    android:text="This is text1"
+    android:textSize="25dip"
+    app:font="fonts/PTN57F.ttf" />
+    
+
+   <View
+   android:id="@+id/spacer"
+   android:layout_width="fill_parent"
+   android:layout_height="50dip"
+   android:layout_alignParentBottom="true"
+   android:layout_below="@id/img" />
+  
+</RelativeLayout>

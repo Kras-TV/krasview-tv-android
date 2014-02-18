@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+ 	android:layout_height="wrap_content"
+    >
+<LinearLayout
+ 
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:orientation="vertical"
+ android:padding="10dp">
+ 
+    <TextView
+        android:id="@+id/txt"
+       android:layout_width="match_parent"
+        android:layout_height="@dimen/image_size"
+        android:text="TextView"
+        android:textSize="@dimen/text_size" 
+        android:gravity="center_vertical" 
+        android:layout_marginRight ="10dp"
+        android:duplicateParentState="true"
+        />
+ 
+    <TextView 
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight ="10dp"
+        android:text=""
+        android:duplicateParentState="true"
+        />  
+</LinearLayout>
+
+<FrameLayout 
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" 
+     android:id="@+id/top"
+     android:visibility="visible"
+    >
+
+         <ImageView
+             android:id="@+id/imageView1"
+             android:layout_width="wrap_content"
+             android:layout_height="200dp"
+             android:src="@drawable/tv_moar"
+             android:layout_gravity="center"
+         	android:gravity="center"/>
+
+</FrameLayout>
+
+
+
+</RelativeLayout>

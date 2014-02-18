@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:background="#000000">
+
+    <!-- the double FrameLayout is necessary here to do cropping on the right
+     (which requires the surface not be centered), while keeping the result centered -->
+    <FrameLayout
+        android:fitsSystemWindows="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/player_surface_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="clip_horizontal|clip_vertical" >
+        </RelativeLayout>
+    </FrameLayout>
+    
+    <RelativeLayout
+        android:id="@+id/overlay_frame"
+        android:fitsSystemWindows="true"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        >
+        
+         <TextView
+            android:id="@+id/player_overlay_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/video_list_length_bg"
+            android:padding="5dp"
+            android:textSize="@dimen/text_size"
+            android:visibility="invisible"
+            />
+
+        <RelativeLayout
+            android:id="@+id/player_overlay_header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:padding="8dp"
+            android:background="#aa000000">
+
+            <TextView
+                android:id="@+id/player_overlay_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:text="@string/title"
+                android:textSize="@dimen/text_size"
+                android:layout_centerVertical="true"/>
+            
+            <ImageView
+                android:id="@+id/player_overlay_icon"
+                android:layout_width="@dimen/image_size"
+                android:layout_height="@dimen/image_size"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+         
+     </RelativeLayout>
+
+        
+</RelativeLayout>

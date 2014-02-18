@@ -1,0 +1,159 @@
+<FrameLayout  
+    android:id="@+id/main_frame"    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#000000"
+    >
+    
+    
+
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" 
+    android:uiOptions="splitActionBarWhenNarrow">
+    
+ 
+
+    <ru.krasview.tv.NewKVList
+        android:id = "@+id/main_list"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft = "true"
+        android:focusableInTouchMode="true"/>    
+        
+     <ru.krasview.filling.KVVideo
+         android:id="@+id/main_video" 
+         android:layout_width="match_parent"
+  		 android:layout_height="match_parent"
+         android:layout_toRightOf="@id/main_list"
+         android:background="#000000">
+         
+         <LinearLayout
+              android:id="@+id/main_menu_panel"
+             android:background="#aa000000"
+             android:layout_width="match_parent"
+  		 	android:layout_height="match_parent"
+  		 	android:visibility="gone"
+  		 	android:clickable="true"
+  		 	android:layout_margin="100dp"
+  		 	android:orientation="vertical"
+  		 	
+  		 >
+             <TextView
+                 android:layout_width="match_parent"
+  		 		 android:layout_height="wrap_content"
+  		 		 android:text="Вправо - телепрограмма"
+  		 		 android:textSize="40dp"
+  		 		 android:layout_margin="20dp"/>
+             <TextView
+                 android:layout_width="match_parent"
+  		 		 android:layout_height="wrap_content"
+  		 		 android:text="Влево - главная"
+  		 		 android:textSize="40dp"
+  		 		 android:layout_margin="20dp"/>
+              <TextView
+                 android:layout_width="match_parent"
+  		 		 android:layout_height="wrap_content"
+  		 		 android:text="Вверх - избранное"
+  		 		 android:textSize="40dp"
+  		 		 android:layout_margin="20dp"/>
+              <TextView
+                 android:layout_width="match_parent"
+  		 		 android:layout_height="wrap_content"
+  		 		 android:text="Вниз - сортировка"
+  		 		 android:textSize="40dp"
+  		 		 android:layout_margin="20dp"/>
+             
+         </LinearLayout>
+         
+     </ru.krasview.filling.KVVideo>
+     
+     <ru.krasview.filling.KVOverlay
+  		 android:id="@+id/main_overlay"
+   	     android:layout_width="match_parent"
+  		 android:layout_height="match_parent"
+  		 android:layout_toRightOf="@id/main_list">
+  		 
+                 
+         
+
+     </ru.krasview.filling.KVOverlay> 
+      <View
+             android:id="@+id/main_menu_pause"
+             android:layout_width="50dp"
+             android:layout_height="50dp"
+             android:layout_alignParentBottom="true"
+             android:layout_alignParentRight="true"
+             android:layout_margin="50dp"
+             android:background="#ffffff" 
+             android:visibility="gone"/>    
+     
+         <View
+             android:id="@+id/main_menu_button"
+             android:layout_width="50dp"
+             android:layout_height="50dp"
+             android:layout_alignParentRight="true"
+             android:layout_alignParentTop="true"
+             android:layout_margin="20dp"
+             android:background="#ffffff" 
+             android:visibility="gone"/>
+         
+         <RelativeLayout
+             android:layout_width="200dp"
+             android:layout_height="200dp"
+             android:layout_alignParentBottom="true"
+             android:layout_alignParentRight="true"
+             android:layout_margin="20dp"
+             android:visibility="gone" >
+
+             <View
+                 android:id="@+id/main_dpad_center"
+                 android:layout_width="50dp"
+                 android:layout_height="50dp"
+                 android:background="#ffffff"
+                 android:layout_centerHorizontal="true"
+                 android:layout_centerVertical="true" />
+              <View
+                  android:id="@+id/main_dpad_up"
+                 android:layout_width="50dp"
+                 android:layout_height="50dp"
+                 android:background="#ffffff"
+                 android:layout_centerHorizontal="true"
+                 android:layout_alignParentTop="true"/>
+                              <View
+                  android:id="@+id/main_dpad_down"
+                 android:layout_width="50dp"
+                 android:layout_height="50dp"
+                 android:background="#ffffff"
+                 android:layout_centerHorizontal="true"
+                 android:layout_alignParentBottom="true"/>
+                
+                 <View
+                 android:id="@+id/main_dpad_left"
+                 android:layout_width="50dp"
+                 android:layout_height="50dp"
+                 android:background="#ffffff"
+                 android:layout_centerVertical="true" 
+                 android:layout_alignParentLeft="true"/>
+                 
+                 <View
+                 android:id="@+id/main_dpad_right"
+                 android:layout_width="50dp"
+                 android:layout_height="50dp"
+                 android:background="#ffffff"
+                 android:layout_centerVertical="true" 
+                 android:layout_alignParentRight="true"/>
+
+         </RelativeLayout>
+
+
+
+</RelativeLayout>
+</FrameLayout>
+   
+ 
+   
