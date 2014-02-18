@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="aspect_ratio_display" translatable="false">
+	    <item>default</item>
+		<item>4:3</item>
+		<item>11:9</item>
+		<item>16:9</item>
+	</string-array>
+	<string-array name="aspect_ratio_video" translatable="false">
+	    <item>default</item>
+		<item>4:3</item>
+		<item>16:9</item>
+		<item>fullscreen</item>
+	</string-array>
+	<string-array name="video_player" translatable="false">
+	    <item>Стандартный плеер</item>
+		<item>VLC</item>
+		<item>Выбирается системой</item>
+	</string-array>
+		<string-array name="video_player_values" translatable="false">
+	    <item>std</item>
+		<item>VLC</item>
+		<item>system</item>
+	</string-array>
+	<string-array name="orientation" translatable="false">
+	    <item>Не установлена</item>
+		<item>Альбомная</item>
+		<item>Книжная</item>
+	</string-array>
+	<string-array name="orientation_values" translatable="false">
+	    <item>default</item>
+		<item>album</item>
+		<item>book</item>
+	</string-array>
+	
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="/ActionBarSherlock/bin/actionbarsherlock.jar"/>
+	<classpathentry exported="true" kind="lib" path="/kvLib/bin/kvlib.jar"/>
+	<classpathentry exported="true" kind="lib" path="/SlidingMenu/bin/slidingmenu.jar"/>
+	<classpathentry exported="true" kind="lib" path="/WheelView/bin/wheelview.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="lib" path="/opt/android-sdk-linux/extras/android/support/v4/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/opt/android-sdk-linux/extras/google/play_billing/market_billing_r02.zip"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/HomeActivity"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

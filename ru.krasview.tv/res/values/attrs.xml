@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+	 <declare-styleable name="VideoView">
+    </declare-styleable>
+    <declare-styleable name="ScalingVideoView">
+    </declare-styleable>
+    <declare-styleable name="KVTime">
+    </declare-styleable>
+    <declare-styleable name="KVFilling">
+    </declare-styleable>
+    
+</resources>

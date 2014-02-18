@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
+   <ListPreference
+		android:key="orientation"
+		android:title="Ориентация экрана"
+		android:summary="Вы можете зафиксировать нужную ориентацию"
+		android:defaultValue="default"
+		android:entries="@array/orientation"
+		android:entryValues="@array/orientation_values"/>
+    
+   <ListPreference
+		android:key="aspect_ratio"
+		android:title="Соотношение сторон"
+		android:summary="Устанавливает соотношение сторон экрана"
+		android:defaultValue="default"
+		android:entries="@array/aspect_ratio_display"
+		android:entryValues="@array/aspect_ratio_display"/>
+   
+    
+   
+   <PreferenceCategory
+        android:title="Настройки для телеканалов">
+        
+       <ListPreference
+		android:key="video_player_tv"
+		android:title="Проигрыватель"		
+		android:defaultValue="VLC"
+		android:entries="@array/video_player"
+		android:entryValues="@array/video_player_values"/>
+       
+       <ListPreference
+		android:key="aspect_ratio_tv"
+		android:title="Соотношение сторон"
+		android:summary="Устанавливает соотношение сторон для телеканалов"
+		android:defaultValue="default"
+		android:entries="@array/aspect_ratio_video"
+		android:entryValues="@array/aspect_ratio_video"/>
+       
+   </PreferenceCategory>
+   
+  <PreferenceCategory
+        android:title="Настройки для видео">
+      	<ListPreference
+			android:key="video_player_serial"
+			android:title="Проигрыватель"		
+			android:defaultValue="std"
+			android:entries="@array/video_player"
+			android:entryValues="@array/video_player_values"/>
+  </PreferenceCategory>
+  
+  <ListPreference
+		android:key="aspect_ratio_video"
+		android:title="Соотношение сторон"
+		android:summary="Устанавливает соотношение сторон для видео"
+		android:defaultValue="default"
+		android:entries="@array/aspect_ratio_video"
+		android:entryValues="@array/aspect_ratio_video"/>
+  
+
+  
+  <!-- CheckBoxPreference
+      android:key="new_video_overlay"
+      android:title="Попробовать новую оболочку для видео"
+      android:defaultValue="true"
+      /-->
+</PreferenceScreen>

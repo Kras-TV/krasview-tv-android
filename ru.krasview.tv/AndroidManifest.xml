@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ru.krasview.tv"
+   
+    android:versionCode="137"
+    android:versionName="1.2.5 - stb">
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    
+
+    <application
+        android:allowBackup="true"
+        android:name="org.videolan.vlc.VLCApplication"
+        android:icon="@drawable/new_krasview_logo_small"
+        android:logo="@drawable/logo_bar"
+        android:label="krasview"
+        android:theme="@style/Theme.MyTheme"
+        android:hardwareAccelerated="true" >
+        
+        <!--  meta-data android:name="android.app.default_searchable"
+                       android:value="SearchActivity"/-->
+        
+        <activity
+            android:name="ru.krasview.tv.MainAuthActivity" 
+            android:theme="@style/Theme.MyTheme.NoTitleBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.LAUNCH"/>
+            	<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>  
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> 
+        </activity>
+
+        <activity
+            android:name="ru.krasview.tv.GuestAuthActivity"  
+            android:configChanges="orientation|keyboardHidden|screenSize" 
+            android:theme="@style/Theme.MyTheme.NoTitleBar"/>
+        <activity
+            android:name="ru.krasview.tv.PrMainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="">
+        </activity>
+        <activity
+            android:name="ru.krasview.tv.SocialAuthActivity"  
+            android:configChanges="orientation|keyboardHidden|screenSize" 
+            android:theme="@style/Theme.MyTheme.NoTitleBar"/>
+        <activity
+            android:name="ru.krasview.tv.OldPreferenceActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="">
+        </activity>
+        
+         <activity
+            android:name="ru.krasview.tv.BillingActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Оплата">
+            <intent-filter>
+                <action android:name="ru.krasview.tv.ACTION_BILLING"/>
+            	<category android:name="android.intent.category.DEFAULT" />
+            	</intent-filter>
+        </activity>
+        
+         <activity
+            android:name="ru.krasview.tv.player.VideoActivity" 
+           	android:configChanges="orientation|screenSize"
+            android:theme="@style/Theme.MyTheme.NoTitleBar.Fullscreen"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="ru.krasview.tv.PLAY_VIDEO_LIST"/>
+            	<category android:name="android.intent.category.DEFAULT" />
+            	</intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".MainActivity"
+            android:label="" 
+            android:theme="@style/Theme.Sherlock"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+            <intent-filter>
+                <action android:name="krasview.intent.action.LAUNCH"/>
+            	<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter> 
+            <intent-filter>
+                <action android:name= "ru.krasview.tv.ACTION_MAIN_ACTIVITY"/>
+            	<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter> 
+            <intent-filter>
+                <action android:name="android.intent.action.LAUNCH"/>
+            	<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>   
+        </activity>
+        
+        <!-- activity
+            android:name="ru.krasview.tv.SearchActivity"
+            android:label="Search" 
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop">
+            
+          
+        </activity-->
+                       
+        <service android:name="org.videolan.vlc.AudioService" />
+
+        <receiver
+            android:name="org.videolan.vlc.PhoneStateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="org.videolan.vlc.RemoteControlClientReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
