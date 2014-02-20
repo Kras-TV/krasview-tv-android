@@ -8,8 +8,8 @@ import com.example.kvlib.R;
 
 import ru.krasview.kvlib.adapter.CombineSimpleAdapter;
 import ru.krasview.kvlib.indep.AuthAccount;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.HeaderAccount;
-import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.kvlib.interfaces.OnLoadCompleteListener;
 import ru.krasview.kvlib.widget.lists.PackageList;
 import ru.krasview.secret.ApiConst;
@@ -209,8 +209,8 @@ public class BillingActivity extends Activity implements OnLoadCompleteListener,
 			String hash = AuthAccount.getInstance().getTvHash();
 			String address = ApiConst.SUBSCRIBE;
 			String secret = Billing.getSecret(hash, packet);
-			String params = "packet=" + packet + "&" + "secret=" + secret + "&"+"hash=" + hash;
-			String result = Parser.getXML(address, params);
+			String params = "packet=" + packet + "&" + "secret=" + secret;
+			String result = HTTPClient.getXML(address, params, AuthAccount.AUTH_TYPE_KRASVIEW);
 			return result;
 		}
 		

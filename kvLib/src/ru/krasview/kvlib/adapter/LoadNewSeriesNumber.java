@@ -6,6 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.secret.ApiConst;
 
@@ -26,7 +27,7 @@ class LoadNewSeriesNumber extends AsyncTask<Void, Void, Integer>
 	protected Integer doInBackground(Void... arg0) 
 	{
 		String address = ApiConst.USER+"?series=" + mMap.get("id");
-		String result = Parser.getXML( address, "", AuthRequestConst.AUTH_KRASVIEW);
+		String result = HTTPClient.getXML( address, "", AuthRequestConst.AUTH_KRASVIEW);
 		if(result.equals("")){
 			return 0;
 		}else{

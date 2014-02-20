@@ -3,7 +3,7 @@ package ru.krasview.kvlib.widget;
 import java.util.HashMap;
 
 import ru.krasview.kvlib.interfaces.ViewProposeListener;
-import ru.krasview.kvlib.indep.Parser;
+import ru.krasview.kvlib.indep.HTTPClient;
 import com.example.kvlib.R;
 
 import android.app.Activity;
@@ -63,7 +63,7 @@ public class SerialDescription extends RelativeLayout {
 
 		@Override
 		protected Bitmap doInBackground(String... params) {		
-			return Parser.getImage(params[0]);
+			return HTTPClient.getImage(params[0]);
 		}
 		
 		@Override 

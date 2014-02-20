@@ -7,6 +7,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.secret.ApiConst;
 
@@ -27,7 +28,7 @@ class LoadCurrentProgram extends AsyncTask<String, Void, Map<String, Object>>
 	@Override
 	protected Map<String, Object> doInBackground(String... arg0) 
 	{
-		String str = Parser.getXML(ApiConst.RECORD, "id="+mMap.get("id"), AuthRequestConst.AUTH_NONE);
+		String str = HTTPClient.getXML(ApiConst.RECORD, "id="+mMap.get("id"), AuthRequestConst.AUTH_NONE);
 		Map<String, Object> m;
 		if(str.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")){				
 			m = new HashMap<String, Object>();

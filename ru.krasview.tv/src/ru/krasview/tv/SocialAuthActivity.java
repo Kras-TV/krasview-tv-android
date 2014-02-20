@@ -3,7 +3,7 @@ package ru.krasview.tv;
 import java.util.regex.Pattern;
 
 import ru.krasview.kvlib.indep.AuthAccount;
-import ru.krasview.kvlib.indep.Parser;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.kvlib.interfaces.OnLoadCompleteListener;
 import ru.krasview.secret.ApiConst;
@@ -40,7 +40,7 @@ public class SocialAuthActivity extends Activity {
     @Override
     protected void onResume(){
     	super.onResume();
-    	Parser.setContext(this);
+    	HTTPClient.setContext(this);
     }
     
     private class CustomWebViewClient extends WebViewClient {
@@ -57,7 +57,7 @@ public class SocialAuthActivity extends Activity {
 				prefs.edit().putString("pref_hash", hash).commit();
         		
         		final String get_tv_hash = ApiConst.TV_HASH;
-        		Parser.getXMLAsync(get_tv_hash, "hash="+hash ,new OnLoadCompleteListener(){
+        		HTTPClient.getXMLAsync(get_tv_hash, "hash="+hash ,new OnLoadCompleteListener(){
 
 					@Override
 					public void loadComplete(String result) {

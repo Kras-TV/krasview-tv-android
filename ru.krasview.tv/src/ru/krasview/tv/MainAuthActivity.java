@@ -11,6 +11,7 @@ import org.w3c.dom.NodeList;
 
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.kvlib.indep.AuthAccount;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.kvlib.interfaces.OnLoadCompleteListener;
 import ru.krasview.secret.ApiConst;
@@ -72,7 +73,7 @@ public class MainAuthActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		Parser.setContext(this);
+		HTTPClient.setContext(this);
 		krasviewIntent = new Intent(IntentConst.ACTION_MAIN_ACTIVITY);
 		setContentView(R.layout.kv_activity_auth_small);
 		prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -84,7 +85,7 @@ public class MainAuthActivity extends Activity {
 	 @Override
 	    protected void onResume(){
 	    	super.onResume();
-	    	Parser.setContext(this);
+	    	HTTPClient.setContext(this);
 	    }
 	
 	private void fastAuth(boolean fast){
@@ -129,8 +130,8 @@ public class MainAuthActivity extends Activity {
 				}
 			}
 		};
-		Parser.getXMLAsync(kraslan_addr, "",listener);
-		Parser.getXMLAsync(oauth_api_addr, "",listener);
+		HTTPClient.getXMLAsync(kraslan_addr, "",listener);
+		HTTPClient.getXMLAsync(oauth_api_addr, "",listener);
 	}
 
 	
@@ -216,7 +217,7 @@ public class MainAuthActivity extends Activity {
 					m.put("title", Html.fromHtml(Parser.getValue("title", locNode)));
 					String image_uri = Parser.getValue("image", locNode);
 					m.put("image_uri", image_uri);
-					m.put("image", Parser.getImage(image_uri));
+					m.put("image", HTTPClient.getImage(image_uri));
 					m.put("url", Parser.getValue("url", locNode));
 					publishProgress(m);
 					}									
@@ -357,8 +358,8 @@ public class MainAuthActivity extends Activity {
 				}	
 			}
 		};
-		Parser.getXMLAsync(auth_address_tv, "login=" + URLEncoder.encode(login) +"&password="+URLEncoder.encode(password) ,listener);
-		Parser.getXMLAsync(auth_address_krasview, "login=" + URLEncoder.encode(login) +"&password="+URLEncoder.encode(password) ,listener);
+		HTTPClient.getXMLAsync(auth_address_tv, "login=" + URLEncoder.encode(login) +"&password="+URLEncoder.encode(password) ,listener);
+		HTTPClient.getXMLAsync(auth_address_krasview, "login=" + URLEncoder.encode(login) +"&password="+URLEncoder.encode(password) ,listener);
 		
 	}
 	

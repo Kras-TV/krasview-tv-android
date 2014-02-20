@@ -2,11 +2,11 @@ package ru.krasview.tv;
 
 import ru.krasview.kvlib.animator.NewAnimator;
 import ru.krasview.kvlib.indep.AuthAccount;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.HeaderAccount;
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.kvlib.indep.consts.TypeConsts;
 import ru.krasview.kvlib.indep.ListAccount;
-import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.kvlib.indep.consts.RequestConst;
 import ru.krasview.kvlib.indep.SearchAccount;
 import ru.krasview.kvlib.interfaces.OnLoadCompleteListener;
@@ -25,6 +25,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -77,6 +78,9 @@ public class MainActivity extends KVSearchAndMenuActivity{
 				getSupportActionBar().setTitle("Аниме");
 			}
 		}
+		
+		Log.i("Debug", "start " + start);
+		
 		styleActionBar();
 		
 		setContentView(R.layout.activity_main_new);	
@@ -91,6 +95,11 @@ public class MainActivity extends KVSearchAndMenuActivity{
 	
 	ProgressDialog pd;
 	private void getPacketAndStart(){
+		getPrefs();	
+		if(ListAccount.fromLauncher){
+			animator.init(start);
+			return;
+		}
 		//получение данных о подключенном пакете
 				pd = new ProgressDialog(this);
 				pd.setTitle("Подождите");
@@ -99,12 +108,12 @@ public class MainActivity extends KVSearchAndMenuActivity{
 					pd.show();
 				}
 				
-				getPrefs();	
-				Parser.getXMLAsync(ApiConst.USER_PACKET, "hash=" + AuthAccount.getInstance().getTvHash(), 
+				
+				HTTPClient.getXMLAsync(ApiConst.USER_PACKET, "hash=" + AuthAccount.getInstance().getTvHash(), 
 						new OnLoadCompleteListener(){
 
 					@Override
-					public void loadComplete(String result) {
+					public void loadComplete(String result){
 						if(!ListAccount.fromLauncher){
 							pd.dismiss();
 						}
@@ -180,8 +189,8 @@ public class MainActivity extends KVSearchAndMenuActivity{
 			}
 			prefs.edit().putBoolean("pref_now_logout", false)
 			.putInt("pref_last_interface", MainAuthActivity.INTERFACE_KRASVIEW).commit();  
-			Parser.setContext(this);
-			Parser.setExitListener(this);
+			HTTPClient.setContext(this);
+			HTTPClient.setExitListener(this);
 			AuthAccount.getInstance().setLogin(prefs.getString("pref_login", ""));
 			AuthAccount.getInstance().setPassword(prefs.getString("pref_password", ""));
 			AuthAccount.getInstance().setHash(prefs.getString("pref_hash", "1"));	

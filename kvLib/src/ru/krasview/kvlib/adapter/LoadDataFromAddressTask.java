@@ -1,6 +1,6 @@
 package ru.krasview.kvlib.adapter;
 
-import ru.krasview.kvlib.indep.Parser;
+import ru.krasview.kvlib.indep.HTTPClient;
 import android.os.AsyncTask;
 
 class LoadDataFromAddressTask extends AsyncTask<String, Void, String>
@@ -13,7 +13,7 @@ class LoadDataFromAddressTask extends AsyncTask<String, Void, String>
 	@Override
 	protected String doInBackground(String... arg0) 
 	{
-		String str = Parser.getXML(arg0[0], arg0[1], mAdapter.withAuth);
+		String str = HTTPClient.getXML(arg0[0], arg0[1], mAdapter.withAuth);
 		return str;
 	}
 	

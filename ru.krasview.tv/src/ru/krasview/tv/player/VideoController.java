@@ -5,8 +5,8 @@ import java.util.Map;
 import org.videolan.vlc.Util;
 
 import ru.krasview.kvlib.indep.AuthAccount;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
-import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.secret.ApiConst;
 
 import com.example.kvlib.R;
@@ -320,7 +320,7 @@ public class VideoController extends FrameLayout {
 				}else{
 					//Log.i("Debug", "VideoController запрашивать время");
 				}
-				String result = Parser.getXML(ApiConst.GET_POSITION, "id="+id, AuthRequestConst.AUTH_KRASVIEW);
+				String result = HTTPClient.getXML(ApiConst.GET_POSITION, "id="+id, AuthRequestConst.AUTH_KRASVIEW);
 				if(result!=null&&!result.equals("")&&!result.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")){
 					int r = (int) Float.parseFloat(result);
 					//Log.i("Debug", "Получено время " + Util.millisToString(r*1000));
@@ -429,7 +429,7 @@ public class VideoController extends FrameLayout {
 					}
 					}else{
 					///Log.i("Debug", "Отправлено: id="+ video + " time=" + Util.millisToString( progress));
-					Parser.getXML(address, params, AuthRequestConst.AUTH_KRASVIEW);
+						HTTPClient.getXML(address, params, AuthRequestConst.AUTH_KRASVIEW);
 				}
 			
 			}

@@ -18,6 +18,7 @@ import ru.krasview.kvlib.interfaces.ViewPropotionerInterface;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.ListView;
 

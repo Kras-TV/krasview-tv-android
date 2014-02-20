@@ -6,6 +6,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import ru.krasview.kvlib.indep.AuthAccount;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.secret.ApiConst;
 
@@ -240,7 +242,7 @@ public class TVController extends FrameLayout {
 	    @Override
 	    protected Node doInBackground(String... params) {
 	      
-	      String str = Parser.getXML(ApiConst.RECORD, "id=" + params[0]);
+	      String str = HTTPClient.getXML(ApiConst.RECORD, "id=" + params[0], AuthAccount.AUTH_TYPE_TV);
 	      Document document = Parser.XMLfromString(str);
 	      if(document == null){
 	    	  return null;

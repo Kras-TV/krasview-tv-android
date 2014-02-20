@@ -5,8 +5,8 @@ import java.util.Map;
 
 import ru.krasview.kvlib.adapter.CombineSimpleAdapter;
 import ru.krasview.kvlib.indep.AuthAccount;
+import ru.krasview.kvlib.indep.HTTPClient;
 import ru.krasview.kvlib.indep.ListAccount;
-import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.kvlib.indep.SearchAccount;
 import ru.krasview.secret.ApiConst;
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
@@ -224,7 +224,7 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
 					protected String doInBackground(String... arg0) {
 						String address = ApiConst.STAR;
 						String params = "channel_id=" + arg0[0];
-						return Parser.getXML(address, params, AuthRequestConst.AUTH_TV);
+						return HTTPClient.getXML(address, params, AuthRequestConst.AUTH_TV);
 					}	
 				
 					@Override 
@@ -254,7 +254,7 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
 				protected String doInBackground(String... arg0) {
 					String address = ApiConst.UNSTAR;
 					String params = "channel_id=" + arg0[0];
-					return Parser.getXML(address, params, AuthRequestConst.AUTH_TV);
+					return HTTPClient.getXML(address, params, AuthRequestConst.AUTH_TV);
 				}	
 				
 				@Override 

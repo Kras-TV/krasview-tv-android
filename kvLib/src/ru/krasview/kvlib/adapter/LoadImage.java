@@ -2,7 +2,7 @@ package ru.krasview.kvlib.adapter;
 
 import java.util.Map;
 
-import ru.krasview.kvlib.indep.Parser;
+import ru.krasview.kvlib.indep.HTTPClient;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -25,7 +25,7 @@ class LoadImage extends AsyncTask<String, Void, Bitmap>
 	@Override
 	protected Bitmap doInBackground(String... arg0) 
 	{
-		return Parser.getImage(arg0[0]);
+		return HTTPClient.getImage(arg0[0]);
 	}
 	
 	@Override 

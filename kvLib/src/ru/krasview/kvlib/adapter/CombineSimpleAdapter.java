@@ -59,6 +59,7 @@ public class CombineSimpleAdapter extends BaseAdapter{
 	public CombineSimpleAdapter(ru.krasview.kvlib.widget.List parent,
 			List<Map<String, Object>> constData, String address, int auth, boolean focus){
 		this(parent, constData, address, auth);
+		
 		mRecFocus = focus;
 	}
 
