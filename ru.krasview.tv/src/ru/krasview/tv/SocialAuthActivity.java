@@ -4,7 +4,6 @@ import java.util.regex.Pattern;
 
 import ru.krasview.kvlib.indep.AuthAccount;
 import ru.krasview.kvlib.indep.Parser;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.kvlib.interfaces.OnLoadCompleteListener;
 import ru.krasview.secret.ApiConst;
@@ -70,7 +69,7 @@ public class SocialAuthActivity extends Activity {
 							SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());						
 							prefs.edit().putString("pref_hash_tv", result).commit();
 							Log.i("Debug", "получен тв хеш с красвью " + result);
-							AuthAccount.tv_hash = result;
+							AuthAccount.getInstance().setTvHash(result);
 			        		
 						}
 					}
@@ -80,7 +79,7 @@ public class SocialAuthActivity extends Activity {
         		prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
     			prefs.edit().putString("pref_login", "")
     						.putString("pref_password", "")
-    						.putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL)
+    						.putInt("pref_auth_type", AuthAccount.AUTH_TYPE_KRASVIEW_SOCIAL)
     						.commit();
     			Intent a = new Intent(IntentConst.ACTION_MAIN_ACTIVITY);
     			startActivity(a);

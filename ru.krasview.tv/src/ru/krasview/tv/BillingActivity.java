@@ -206,7 +206,7 @@ public class BillingActivity extends Activity implements OnLoadCompleteListener,
 		@Override
 		protected String doInBackground(Map<String, Object>... maps) {
 			String packet = (String)maps[0].get("id");
-			String hash = AuthAccount.tv_hash;
+			String hash = AuthAccount.getInstance().getTvHash();
 			String address = ApiConst.SUBSCRIBE;
 			String secret = Billing.getSecret(hash, packet);
 			String params = "packet=" + packet + "&" + "secret=" + secret + "&"+"hash=" + hash;

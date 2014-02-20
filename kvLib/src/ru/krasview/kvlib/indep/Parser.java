@@ -31,7 +31,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import ru.krasview.kvlib.indep.AuthAccount;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
 import ru.krasview.kvlib.interfaces.FatalErrorExitListener;
 import ru.krasview.kvlib.interfaces.OnLoadCompleteListener;
@@ -83,16 +82,16 @@ public class Parser
 		}
 		if(Uri.parse(address) != null && Uri.parse(address).getQuery() == null){
 			address = address + "?" 
-					+ "login=" + URLEncoder.encode((AuthAccount.login==null)
-					?"":AuthAccount.login) + "&" 
-					+ "password=" + URLEncoder.encode((AuthAccount.password==null)
-					?"":AuthAccount.password);	    	
+					+ "login=" + URLEncoder.encode((AuthAccount.getInstance().getLogin() == null)
+					?"":AuthAccount.getInstance().getLogin()) + "&" 
+					+ "password=" + URLEncoder.encode((AuthAccount.getInstance().getPassword() == null)
+					?"":AuthAccount.getInstance().getPassword());	    	
 		}else{
 			address = address + "&" 
-					+ "login=" + URLEncoder.encode((AuthAccount.login==null)
-					?"":AuthAccount.login) + "&" 
-					+ "password=" + URLEncoder.encode((AuthAccount.password==null)
-					?"":AuthAccount.password);
+					+ "login=" + URLEncoder.encode((AuthAccount.getInstance().getLogin()==null)
+					?"":AuthAccount.getInstance().getLogin()) + "&" 
+					+ "password=" + URLEncoder.encode((AuthAccount.getInstance().getPassword()==null)
+					?"":AuthAccount.getInstance().getPassword());
 		
 		}
 		if(params != null){
@@ -114,53 +113,51 @@ public class Parser
 			address = address + "&";
 		}
 		
-		if(params != null&&!params.equals("")){
+		if(params != null && !params.equals("")){
 			address = address + params + "&";
 		}
 		String auth_address = address;
+		AuthAccount account = AuthAccount.getInstance();
 		switch(request_auth_type){
 		case AuthRequestConst.AUTH_NONE:	
 			auth_address = address;
 			break;
 		case AuthRequestConst.AUTH_KRASVIEW:
-			if(AuthAccount.auth_type != AuthEnterConsts.AUTH_TYPE_KRASVIEW && AuthAccount.auth_type != AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
+			if(!account.isKrasviewAccount()){
 				return "";
 			}
-			auth_address = address + "hash=" + AuthAccount.hash;	
+			auth_address = address + "hash=" + account.getHash();	
 			break;
 		case AuthRequestConst.AUTH_TV:
-			if(AuthAccount.auth_type != AuthEnterConsts.AUTH_TYPE_KRASVIEW 
-				&& AuthAccount.auth_type != AuthEnterConsts.AUTH_TYPE_TV 
-				&& AuthAccount.auth_type != AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
+			if(!account.isTVAccount()){
 				return null;
-			}else if( AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
-				auth_address = address + "hash=" + AuthAccount.tv_hash; 
+			}else if(account.isSocialNetworkAccount()){
+				auth_address = address + "hash=" + account.getTvHash(); 
 			}else{
 				auth_address = address 
-					+ "login=" + URLEncoder.encode(AuthAccount.login) 
-					+ "&password=" + URLEncoder.encode(AuthAccount.password); 
+					+ "login=" + URLEncoder.encode(AuthAccount.getInstance().getLogin()) 
+					+ "&password=" + URLEncoder.encode(AuthAccount.getInstance().getPassword()); 
 			}
 			break;
 		}
 		String result = getXML(auth_address);
 		if(result.equals("wrong hash")){		
-			if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
+			if(account.isSocialNetworkAccount()){
 				exitFromApplication();
 				return "";
-			}else if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
-				return "";
 			}
-			AuthAccount.hash = getXML(ApiConst.KRASVIEW_AUTH+"?login=" 
-			+ URLEncoder.encode(AuthAccount.login) 
-			+ "&password=" + URLEncoder.encode(AuthAccount.password));
-			if(AuthAccount.hash.equals("error")){
+			String hash = getXML(ApiConst.KRASVIEW_AUTH + "?login=" 
+					+ URLEncoder.encode(account.getLogin()) 
+					+ "&password=" + URLEncoder.encode(account.getPassword()));
+			AuthAccount.getInstance().setHash(hash);
+			if(AuthAccount.getInstance().getHash().equals("error")){
 				exitFromApplication();
 				return "";
 			}
 			SharedPreferences prefs = PreferenceManager
 					.getDefaultSharedPreferences(mContext);
-			prefs.edit().putString("pref_hash", AuthAccount.hash).commit();			
-			auth_address = address + "hash=" + AuthAccount.hash;
+			prefs.edit().putString("pref_hash", account.getHash()).commit();			
+			auth_address = address + "hash=" + account.getHash();
 			result = getXML(auth_address);
 		}	
 		return result;

@@ -9,8 +9,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.IntentConst;
+import ru.krasview.kvlib.indep.AuthAccount;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.kvlib.interfaces.OnLoadCompleteListener;
 import ru.krasview.secret.ApiConst;
@@ -89,7 +89,7 @@ public class MainAuthActivity extends Activity {
 	
 	private void fastAuth(boolean fast){
 		if(!fast){
-			prefs.edit().putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_UNKNOWN).commit();
+			prefs.edit().putInt("pref_auth_type", AuthAccount.AUTH_TYPE_UNKNOWN).commit();
 			return;
 		}
 		Intent local = null;
@@ -106,7 +106,7 @@ public class MainAuthActivity extends Activity {
 	
 	private void getAuthPrefs(){
 		prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-		auth_type = prefs.getInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_UNKNOWN);
+		auth_type = prefs.getInt("pref_auth_type", AuthAccount.AUTH_TYPE_UNKNOWN);
 		logout = prefs.getBoolean("pref_now_logout", true);
 		login = prefs.getString("pref_login", "");
 		edit_login.setText(login);
@@ -266,7 +266,7 @@ public class MainAuthActivity extends Activity {
 		password = edit_password.getText().toString();
 		prefs.edit().putString("pref_login", login)
 					.putString("pref_password", password)
-					.putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_UNKNOWN)
+					.putInt("pref_auth_type", AuthAccount.AUTH_TYPE_UNKNOWN)
 					.putString("pref_hash", "1").putString("pref_hash_tv", "1").commit();
 		if(login.equals("")&&password.equals("")){
 			Toast toast = Toast.makeText(getApplicationContext(), 
@@ -338,7 +338,7 @@ public class MainAuthActivity extends Activity {
 				if(tv&&krasview){
 					startActivity(krasviewIntent);
 					MainAuthActivity.this.finish();
-					prefs.edit().putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_KRASVIEW).commit();
+					prefs.edit().putInt("pref_auth_type", AuthAccount.AUTH_TYPE_KRASVIEW).commit();
 				}if(tv&&!krasview){
 					startActivity(krasviewIntent);
 					MainAuthActivity.this.finish();
@@ -346,7 +346,7 @@ public class MainAuthActivity extends Activity {
 							"Будут недоступны функции красвью, требующие авторизации ", 
 							Toast.LENGTH_LONG); 
 							toast.show();
-					prefs.edit().putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_TV)
+					prefs.edit().putInt("pref_auth_type", AuthAccount.AUTH_TYPE_TV)
 					.commit();		
 				}if(!tv&&!krasview){
 					Toast toast = Toast.makeText(getApplicationContext(), 
@@ -378,7 +378,7 @@ public class MainAuthActivity extends Activity {
 		case R.id.kv_auth_kraslan_button:		
 			prefs.edit().putString("pref_login", "")
 						.putString("pref_password", "")
-						.putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_TV).commit();
+						.putInt("pref_auth_type", AuthAccount.AUTH_TYPE_TV).commit();
 			fastAuth(true);	
 			break;
 		}
@@ -404,7 +404,7 @@ public class MainAuthActivity extends Activity {
 		 }else{
 			 prefs.edit().putString("pref_login", "")
 			 .putString("pref_password", "")
-			 .putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_GUEST).commit();
+			 .putInt("pref_auth_type", AuthAccount.AUTH_TYPE_GUEST).commit();
 			 Intent a = new Intent(IntentConst.ACTION_MAIN_ACTIVITY);
 			 startActivity(a);
 			 this.finish();

@@ -3,7 +3,6 @@ package ru.krasview.tv;
 import ru.krasview.kvlib.animator.NewAnimator;
 import ru.krasview.kvlib.indep.AuthAccount;
 import ru.krasview.kvlib.indep.HeaderAccount;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.kvlib.indep.consts.TypeConsts;
 import ru.krasview.kvlib.indep.ListAccount;
@@ -101,7 +100,7 @@ public class MainActivity extends KVSearchAndMenuActivity{
 				}
 				
 				getPrefs();	
-				Parser.getXMLAsync(ApiConst.USER_PACKET, "hash=" + AuthAccount.tv_hash, 
+				Parser.getXMLAsync(ApiConst.USER_PACKET, "hash=" + AuthAccount.getInstance().getTvHash(), 
 						new OnLoadCompleteListener(){
 
 					@Override
@@ -170,8 +169,9 @@ public class MainActivity extends KVSearchAndMenuActivity{
 				prefs.edit().putString("video_player_serial", "std").commit();
 			}
 			
-			AuthAccount.auth_type = prefs.getInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_UNKNOWN);
-			if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_UNKNOWN){
+			AuthAccount.getInstance().setType(
+					prefs.getInt("pref_auth_type", AuthAccount.AUTH_TYPE_UNKNOWN));
+			if(account.isUnknownAccount()){
 				prefs.edit().putBoolean("pref_now_logout", true).commit();
 				Intent a = new Intent(this, MainAuthActivity.class);
 				startActivity(a);
@@ -182,10 +182,10 @@ public class MainActivity extends KVSearchAndMenuActivity{
 			.putInt("pref_last_interface", MainAuthActivity.INTERFACE_KRASVIEW).commit();  
 			Parser.setContext(this);
 			Parser.setExitListener(this);
-			AuthAccount.login = prefs.getString("pref_login", "");
-			AuthAccount.password = prefs.getString("pref_password", "");
-			AuthAccount.hash = prefs.getString("pref_hash", "1");	
-			AuthAccount.tv_hash = prefs.getString("pref_hash_tv", "1");
+			AuthAccount.getInstance().setLogin(prefs.getString("pref_login", ""));
+			AuthAccount.getInstance().setPassword(prefs.getString("pref_password", ""));
+			AuthAccount.getInstance().setHash(prefs.getString("pref_hash", "1"));	
+			AuthAccount.getInstance().setTvHash(prefs.getString("pref_hash_tv", "1"));
 			}
 	
 	String pref_orientation = "default";
@@ -202,15 +202,7 @@ public class MainActivity extends KVSearchAndMenuActivity{
     		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     	}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@Override
     public void onBackPressed() {
         super.onBackPressed();

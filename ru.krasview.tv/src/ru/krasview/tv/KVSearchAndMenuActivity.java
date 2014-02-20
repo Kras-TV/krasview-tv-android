@@ -9,7 +9,6 @@ import ru.krasview.kvlib.indep.ListAccount;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.kvlib.indep.SearchAccount;
 import ru.krasview.secret.ApiConst;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
 import ru.krasview.kvlib.indep.consts.TagConsts;
 import ru.krasview.kvlib.indep.consts.TypeConsts;
@@ -41,6 +40,8 @@ import com.example.kvlib.R;
 
 public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity 
 									 implements FatalErrorExitListener{
+	
+	AuthAccount account = AuthAccount.getInstance();
 	
 	EditText editsearch;
 	SearchFragment searchFragment;
@@ -97,17 +98,17 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
 		MenuItem loginItem = menu.findItem(R.id.kv_login_item );
 		String str = "";
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-		int auth_type = prefs.getInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_UNKNOWN);
+		int auth_type = prefs.getInt("pref_auth_type", AuthAccount.AUTH_TYPE_UNKNOWN);
 		String login = prefs.getString("pref_login", "");
 		String password = prefs.getString("pref_password", "");
 		switch(auth_type){
-		case AuthEnterConsts.AUTH_TYPE_GUEST:
+		case AuthAccount.AUTH_TYPE_GUEST:
 			str = "Гость";
 			break;
-		case AuthEnterConsts.AUTH_TYPE_TV:
+		case AuthAccount.AUTH_TYPE_TV:
 			str = "Абонент";
 			break;
-		case AuthEnterConsts.AUTH_TYPE_UNKNOWN:
+		case AuthAccount.AUTH_TYPE_UNKNOWN:
 			str = "Неизвестно";
 			break;
 		}
@@ -199,8 +200,7 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
 
 	    if(contextMenuMap.get(TagConsts.TYPE) != null
 	    		&& contextMenuMap.get(TagConsts.TYPE).equals(TypeConsts.CHANNEL)){
-	    	if(AuthAccount.auth_type != AuthEnterConsts.AUTH_TYPE_KRASVIEW 
-	    			&& AuthAccount.auth_type != AuthEnterConsts.AUTH_TYPE_TV){
+	    	if(!account.isTVAccount()){
 				return;
 			}
 	    	if(contextMenuMap.get("star").equals("0")){

@@ -3,8 +3,6 @@ package ru.krasview.kvlib.widget.lists;
 import java.util.HashMap;
 import java.util.Map;
 
-import ru.krasview.kvlib.indep.AuthAccount;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.TypeConsts;
 import ru.krasview.kvlib.widget.List;
 
@@ -21,24 +19,19 @@ public class MainList extends List
 	public void setConstData() 
 	{
 		Map<String, Object> m;
-		if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW||AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
+		if(account.isKrasviewAccount()){
 			m = new HashMap<String, Object>();
 			m.put("type", "my_shows_all");
 			m.put("name", "Я смотрю");
 			data.add(m);
 		}	
-		if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW || AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_TV){	
+		if(account.isTVAccount()){	
 			m = new HashMap<String, Object>();
 			m.put("type", TypeConsts.TV);
 			m.put("name", "Телевидение");
 			data.add(m);
 		}
-		if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){	
-			m = new HashMap<String, Object>();
-			m.put("type", TypeConsts.TV);
-			m.put("name", "Телевидение");
-			data.add(m);
-		}
+
 	    m = new HashMap<String, Object>();
 	    m.put("type", TypeConsts.ALL_SHOW);
 	    m.put("name", "Сериалы");

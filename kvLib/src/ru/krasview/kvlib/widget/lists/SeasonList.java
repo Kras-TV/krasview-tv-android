@@ -9,8 +9,7 @@ import org.w3c.dom.NodeList;
 
 import ru.krasview.kvlib.adapter.LoadDataToGUITask;
 import ru.krasview.kvlib.indep.Parser;
-import ru.krasview.kvlib.indep.AuthAccount;import ru.krasview.secret.ApiConst;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
+import ru.krasview.secret.ApiConst;
 import ru.krasview.kvlib.widget.List;
 
 import android.content.Context;
@@ -29,8 +28,7 @@ public class SeasonList extends List{
 	@Override
 	public void setConstData(){
 		Map<String, Object> m;
-		if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW
-				||AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
+		if(account.isKrasviewAccount()){
 			m = new HashMap<String, Object>();
 			m.put("type", "new_series");
 		    m.put("name", "Новые серии");

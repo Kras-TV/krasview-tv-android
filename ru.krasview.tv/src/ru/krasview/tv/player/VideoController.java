@@ -5,7 +5,6 @@ import java.util.Map;
 import org.videolan.vlc.Util;
 
 import ru.krasview.kvlib.indep.AuthAccount;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.secret.ApiConst;
@@ -421,7 +420,7 @@ public class VideoController extends FrameLayout {
 				//String params_complete = "video_id="+video;//+"&login="+URLEncoder.encode(Parser.login)+"&password="+URLEncoder.encode(Parser.password);
 				
 				if(mComplete && mMap.get("type").equals("video")){
-					if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW){
+					if(AuthAccount.getInstance().isKrasviewAccount()){
 					//Log.i("Debug", "Отправлено: id="+ video + " просмотрено");
 					//String str = Parser.getXML(address_complete, params_complete, AuthRequestConst.AUTH_KRASVIEW);	
 					//Log.i("Debug", "получено " + params_complete);

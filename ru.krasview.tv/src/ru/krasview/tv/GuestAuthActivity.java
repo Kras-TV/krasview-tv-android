@@ -1,6 +1,6 @@
 package ru.krasview.tv;
 
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
+import ru.krasview.kvlib.indep.AuthAccount;
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.secret.ApiConst;
 import android.app.Activity;
@@ -29,7 +29,7 @@ public class GuestAuthActivity extends Activity {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		prefs.edit().putString("pref_login", "")
 					.putString("pref_password", "")
-					.putInt("pref_auth_type", AuthEnterConsts.AUTH_TYPE_GUEST)
+					.putInt("pref_auth_type", AuthAccount.AUTH_TYPE_GUEST)
 					.putBoolean("pref_guest_check", box.isChecked()).commit();
 		Intent a = new Intent(IntentConst.ACTION_MAIN_ACTIVITY);
 		startActivity(a);

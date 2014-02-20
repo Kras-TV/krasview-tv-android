@@ -10,11 +10,10 @@ import org.w3c.dom.NodeList;
 
 import ru.krasview.kvlib.adapter.CombineSimpleAdapter;
 import ru.krasview.kvlib.adapter.LoadDataToGUITask;
-import ru.krasview.kvlib.indep.AuthAccount;
 import ru.krasview.kvlib.indep.ListAccount;
 import ru.krasview.kvlib.indep.Parser;
+import ru.krasview.kvlib.indep.consts.AuthRequestConst;
 import ru.krasview.secret.ApiConst;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 
 import android.app.Activity;
 import android.content.Context;
@@ -37,11 +36,14 @@ public class AllShowList extends UserShowList{
 		return ApiConst.SHOW;
 	}
 	
+	protected int getAuthRequest(){
+		return AuthRequestConst.AUTH_NONE;
+	}
+	
 	@Override
 	public void setConstData(){
 		Map<String, Object> m;
-		if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW
-				&& ListAccount.fromLauncher){
+		if(account.isKrasviewAccount() && ListAccount.fromLauncher){
 			m = new HashMap<String, Object>();
 			m.put("type", "my_shows_all_s");
 			m.put("name", "Я смотрю");

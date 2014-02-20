@@ -6,7 +6,6 @@ import java.util.Map;
 
 import ru.krasview.kvlib.adapter.CombineSimpleAdapter;
 import ru.krasview.kvlib.adapter.LoadDataToGUITask;
-import ru.krasview.kvlib.indep.consts.AuthEnterConsts;
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
 import ru.krasview.kvlib.indep.consts.TagConsts;
 import ru.krasview.kvlib.indep.consts.TypeConsts;
@@ -29,6 +28,8 @@ public abstract  class List extends ListView implements ViewPropotionerInterface
 	private Map<String, Object> mMap;
 	
 	protected ArrayList<Map<String, Object>> data;
+	
+	protected AuthAccount account;
 
 	protected void setConstData(){}
 	
@@ -49,6 +50,7 @@ public abstract  class List extends ListView implements ViewPropotionerInterface
 		if(ListAccount.fromLauncher){
 			this.setDivider(null);
 		}
+		account = AuthAccount.getInstance();
 	    ((Activity)getContext()).registerForContextMenu(this);
 	}
 	
@@ -69,8 +71,7 @@ public abstract  class List extends ListView implements ViewPropotionerInterface
 //--------------------------------------------------------------------	
 	
 	protected boolean showBilling(){	
-		if(AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW 
-				|| AuthAccount.auth_type == AuthEnterConsts.AUTH_TYPE_KRASVIEW_SOCIAL){
+		if(account.isKrasviewAccount()){
 			if(HeaderAccount.hideHeader()){
 				return false;
 			}
