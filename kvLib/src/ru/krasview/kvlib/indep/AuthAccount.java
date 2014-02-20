@@ -8,10 +8,9 @@ public class AuthAccount {
 	public final static int AUTH_TYPE_GUEST = 3;//как неавторизованный пользователь
 	public final static int AUTH_TYPE_KRASVIEW_SOCIAL = 4;//как пользователь krasview через социальную сеть 
 	
-	private static AuthAccount instance;
+	private static AuthAccount instance = new AuthAccount();
 	
 	private AuthAccount(){
-		super();
 	};
 	
 	public static AuthAccount getInstance(){
