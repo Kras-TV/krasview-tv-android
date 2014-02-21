@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.krasview.tv"
    
-    android:versionCode="137"
-    android:versionName="1.2.5 - stb">
+    android:versionCode="139"
+    android:versionName="1.2.6 - market">
 
     <uses-sdk
         android:minSdkVersion="8"
