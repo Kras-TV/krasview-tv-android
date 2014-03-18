@@ -27,7 +27,7 @@ import java.util.List;
 import org.videolan.libvlc.EventHandler;
 import org.videolan.libvlc.LibVLC;
 import org.videolan.vlc.Media;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.VLCApplication;
 import org.videolan.vlc.WeakHandler;
 

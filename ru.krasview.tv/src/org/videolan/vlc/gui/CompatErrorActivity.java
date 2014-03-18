@@ -12,7 +12,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.videolan.libvlc.LibVlcUtil;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 
 import android.app.Activity;
 import android.os.AsyncTask;

@@ -26,7 +26,7 @@ import java.util.Locale;
 
 import org.videolan.vlc.BitmapCache;
 import org.videolan.vlc.Media;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.Util;
 
 import android.content.Context;

@@ -1,5 +1,7 @@
 package ru.krasview.tv;
 
+import ru.krasview.tv_site.R;
+
 import ru.krasview.kvlib.indep.AuthAccount;
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.secret.ApiConst;

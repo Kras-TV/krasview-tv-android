@@ -1,5 +1,7 @@
 package ru.krasview.tv;
 
+import ru.krasview.tv_site.R;
+
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 

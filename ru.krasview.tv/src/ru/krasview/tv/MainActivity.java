@@ -58,8 +58,8 @@ public class MainActivity extends KVSearchAndMenuActivity{
 		}
 		super.onCreate(savedInstanceState);
 		if(ListAccount.fromLauncher){
-        	overridePendingTransition(ru.krasview.tv.R.anim.anim_enter_right, 
-        			ru.krasview.tv.R.anim.anim_leave_left);
+        	overridePendingTransition(ru.krasview.tv_site.R.anim.anim_enter_right, 
+        			ru.krasview.tv_site.R.anim.anim_leave_left);
         }
 		
 		//Здесь обработка запуска из ланчера, поэтому здесь идет 
@@ -213,8 +213,8 @@ public class MainActivity extends KVSearchAndMenuActivity{
     public void onBackPressed() {
         super.onBackPressed();
         if(ListAccount.fromLauncher){
-        	overridePendingTransition(ru.krasview.tv.R.anim.anim_enter_left, 
-        			ru.krasview.tv.R.anim.anim_leave_right);
+        	overridePendingTransition(ru.krasview.tv_site.R.anim.anim_enter_left, 
+        			ru.krasview.tv_site.R.anim.anim_leave_right);
         }
     }
 	

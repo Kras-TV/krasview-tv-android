@@ -71,12 +71,12 @@ public abstract  class List extends ListView implements ViewPropotionerInterface
 //--------------------------------------------------------------------	
 	
 	protected boolean showBilling(){	
-		if(account.isKrasviewAccount()){
+	/*if(account.isKrasviewAccount()){
 			if(HeaderAccount.hideHeader()){
 				return false;
 			}
 			return true;
-		}
+		}*/
 		return false;
 	}
 	

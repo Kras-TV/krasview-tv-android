@@ -41,7 +41,7 @@ import org.videolan.libvlc.LibVlcException;
 import org.videolan.vlc.AudioServiceController;
 import org.videolan.vlc.Media;
 import org.videolan.vlc.MediaDatabase;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.Util;
 import org.videolan.vlc.VLCApplication;
 import org.videolan.vlc.WeakHandler;

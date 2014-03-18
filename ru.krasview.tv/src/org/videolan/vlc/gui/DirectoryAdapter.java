@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 
 import org.videolan.libvlc.LibVLC;
 import org.videolan.vlc.Media;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.Util;
 import org.videolan.vlc.VLCApplication;
 

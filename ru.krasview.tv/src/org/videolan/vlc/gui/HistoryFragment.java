@@ -22,7 +22,7 @@ package org.videolan.vlc.gui;
 
 import org.videolan.libvlc.LibVLC;
 import org.videolan.vlc.AudioServiceController;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.gui.audio.AudioPlayerActivity;
 import android.content.Intent;
 import android.os.Bundle;

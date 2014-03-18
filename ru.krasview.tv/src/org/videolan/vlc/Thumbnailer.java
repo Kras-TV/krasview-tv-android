@@ -20,7 +20,7 @@
 
 package org.videolan.vlc;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 
 import java.lang.Thread.State;
 import java.nio.ByteBuffer;

@@ -30,7 +30,7 @@ import org.videolan.vlc.AudioServiceController;
 import org.videolan.vlc.Media;
 import org.videolan.vlc.MediaDatabase;
 import org.videolan.vlc.MediaLibrary;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.Thumbnailer;
 import org.videolan.vlc.Util;
 import org.videolan.vlc.VlcRunnable;

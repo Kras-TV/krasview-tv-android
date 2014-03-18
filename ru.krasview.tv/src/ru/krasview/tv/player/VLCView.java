@@ -10,7 +10,7 @@ import org.videolan.libvlc.LibVlcException;
 import org.videolan.vlc.Util;
 
 
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 
 import android.app.Activity;
 import android.content.Context;

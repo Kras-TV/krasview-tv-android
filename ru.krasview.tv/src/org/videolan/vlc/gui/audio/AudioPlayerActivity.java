@@ -22,7 +22,7 @@ package org.videolan.vlc.gui.audio;
 
 import org.videolan.vlc.AudioService;
 import org.videolan.vlc.AudioServiceController;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.RepeatType;
 import org.videolan.vlc.Util;
 import org.videolan.vlc.gui.CommonDialogs;

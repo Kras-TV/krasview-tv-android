@@ -1,5 +1,7 @@
 package ru.krasview.tv;
 
+import ru.krasview.tv_site.R;
+
 import java.util.regex.Pattern;
 
 import ru.krasview.kvlib.indep.AuthAccount;

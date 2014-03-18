@@ -21,7 +21,7 @@
 package org.videolan.vlc.gui.video;
 
 import org.videolan.libvlc.TrackInfo;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 
 import android.content.Context;
 import android.content.res.Resources;

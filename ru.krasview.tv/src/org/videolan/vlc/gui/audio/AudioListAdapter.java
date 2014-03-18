@@ -25,7 +25,7 @@ import java.util.List;
 
 import org.videolan.vlc.BitmapCache;
 import org.videolan.vlc.Media;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

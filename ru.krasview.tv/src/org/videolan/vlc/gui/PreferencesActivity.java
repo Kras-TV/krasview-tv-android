@@ -25,7 +25,7 @@ import org.videolan.vlc.AudioService;
 import org.videolan.vlc.AudioServiceController;
 import org.videolan.vlc.BitmapCache;
 import org.videolan.vlc.MediaDatabase;
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.Util;
 
 import android.app.AlertDialog;

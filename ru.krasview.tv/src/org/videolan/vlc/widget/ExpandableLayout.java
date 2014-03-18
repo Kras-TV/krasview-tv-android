@@ -20,7 +20,7 @@
 
 package org.videolan.vlc.widget;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv_site.R;
 import org.videolan.vlc.interfaces.OnExpandableListener;
 
 import android.content.Context;
