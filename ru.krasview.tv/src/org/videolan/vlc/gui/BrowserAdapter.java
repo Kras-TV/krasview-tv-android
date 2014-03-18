@@ -25,7 +25,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.videolan.vlc.MediaDatabase;
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.VLCApplication;
 
 import android.content.Context;

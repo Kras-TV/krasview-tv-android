@@ -20,8 +20,6 @@
 
 package org.videolan.vlc;
 
-
-
 import java.util.HashSet;
 import java.util.Locale;
 
@@ -29,7 +27,7 @@ import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.LibVlcException;
 import org.videolan.libvlc.TrackInfo;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteFullException;

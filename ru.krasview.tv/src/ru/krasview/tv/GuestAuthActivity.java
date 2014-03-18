@@ -3,6 +3,7 @@ package ru.krasview.tv;
 import ru.krasview.kvlib.indep.AuthAccount;
 import ru.krasview.kvlib.indep.consts.IntentConst;
 import ru.krasview.secret.ApiConst;
+import ru.krasview.tv2.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;

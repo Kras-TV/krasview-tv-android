@@ -25,7 +25,7 @@ import java.util.Calendar;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.VLCApplication;
 import org.videolan.vlc.widget.ExpandableLayout;
 

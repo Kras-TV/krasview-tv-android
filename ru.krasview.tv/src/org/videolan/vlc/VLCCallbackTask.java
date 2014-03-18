@@ -19,7 +19,7 @@
  *****************************************************************************/
 package org.videolan.vlc;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 
 import android.app.ProgressDialog;
 import android.content.Context;

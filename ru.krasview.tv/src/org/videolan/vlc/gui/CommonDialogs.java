@@ -24,7 +24,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.VLCApplication;
 import org.videolan.vlc.VlcRunnable;
 import org.videolan.vlc.interfaces.OnExpandableListener;

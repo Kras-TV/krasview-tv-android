@@ -20,7 +20,7 @@
 
 package org.videolan.vlc.gui;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

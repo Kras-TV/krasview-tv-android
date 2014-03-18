@@ -21,7 +21,7 @@
 package org.videolan.vlc.widget;
 
 import android.app.Activity;
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.gui.audio.AudioPlayerActivity;
 import org.videolan.vlc.interfaces.IAudioPlayer;
 import org.videolan.vlc.interfaces.IAudioPlayerControl;

@@ -21,7 +21,7 @@
 package org.videolan.vlc.gui.expandable;
 
 import org.videolan.libvlc.LibVLC;
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.Util;
 import org.videolan.vlc.widget.ExpandableLayout;
 

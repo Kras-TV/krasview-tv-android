@@ -20,7 +20,7 @@
 
 package org.videolan.vlc.widget;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.interfaces.IPlayerControl;
 import org.videolan.vlc.interfaces.OnPlayerControlListener;
 

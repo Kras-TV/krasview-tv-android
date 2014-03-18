@@ -54,7 +54,7 @@ public class VideoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	
-		overridePendingTransition(ru.krasview.tv.R.anim.anim_enter_right, ru.krasview.tv.R.anim.anim_leave_left);
+		overridePendingTransition(ru.krasview.tv2.R.anim.anim_enter_right, ru.krasview.tv2.R.anim.anim_leave_left);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kv_b_activity);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -332,7 +332,7 @@ public class VideoActivity extends Activity {
 		    intent.putExtra("index", current);
 		    setResult(RESULT_OK, intent);
 		    super.onBackPressed();
-		    overridePendingTransition(ru.krasview.tv.R.anim.anim_enter_left, ru.krasview.tv.R.anim.anim_leave_right);
+		    overridePendingTransition(ru.krasview.tv2.R.anim.anim_enter_left, ru.krasview.tv2.R.anim.anim_leave_right);
 	   }
 	   
 	   @Override

@@ -120,9 +120,9 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
 		}
     	loginItem.setTitle(locLog);
     	
-    	if(ListAccount.fromLauncher){
+    	//if(ListAccount.fromLauncher){
     		menu.findItem(R.id.kv_search_item).setVisible(false);
-    	}
+    	//}
     	
     	editsearch = (EditText) menu.findItem(R.id.kv_search_item).getActionView();
     	editsearch.addTextChangedListener(textWatcher);

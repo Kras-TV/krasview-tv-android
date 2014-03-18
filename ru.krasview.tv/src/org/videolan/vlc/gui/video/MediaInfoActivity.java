@@ -27,7 +27,7 @@ import org.videolan.libvlc.LibVlcException;
 import org.videolan.libvlc.TrackInfo;
 import org.videolan.vlc.Media;
 import org.videolan.vlc.MediaLibrary;
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.Util;
 import org.videolan.vlc.WeakHandler;
 

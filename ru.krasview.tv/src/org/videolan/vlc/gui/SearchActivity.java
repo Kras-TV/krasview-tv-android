@@ -27,7 +27,7 @@ import org.videolan.vlc.AudioServiceController;
 import org.videolan.vlc.MediaDatabase;
 import org.videolan.vlc.Media;
 import org.videolan.vlc.MediaLibrary;
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.gui.audio.AudioPlayerActivity;
 import org.videolan.vlc.gui.video.VideoPlayerActivity;
 

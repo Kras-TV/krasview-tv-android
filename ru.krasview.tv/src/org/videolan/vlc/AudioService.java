@@ -48,7 +48,7 @@ import org.videolan.vlc.gui.video.VideoPlayerActivity;
 import org.videolan.vlc.interfaces.IAudioService;
 import org.videolan.vlc.interfaces.IAudioServiceCallback;
 
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 
 import android.annotation.TargetApi;
 import android.app.Notification;

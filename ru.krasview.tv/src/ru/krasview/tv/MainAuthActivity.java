@@ -1,5 +1,7 @@
 package ru.krasview.tv;
 
+import ru.krasview.tv2.R;
+
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;

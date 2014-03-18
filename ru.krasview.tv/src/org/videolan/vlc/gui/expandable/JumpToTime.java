@@ -28,7 +28,7 @@ import kankan.wheel.widget.adapters.NumericWheelAdapter;
 
 import org.videolan.libvlc.LibVLC;
 import org.videolan.vlc.AudioServiceController;
-import ru.krasview.tv.R;
+import ru.krasview.tv2.R;
 import org.videolan.vlc.widget.ExpandableLayout;
 
 import android.content.Context;
