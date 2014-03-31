@@ -13,6 +13,7 @@ import ru.krasview.kvlib.adapter.LoadDataToGUITask;
 import ru.krasview.kvlib.indep.ListAccount;
 import ru.krasview.kvlib.indep.Parser;
 import ru.krasview.kvlib.indep.consts.AuthRequestConst;
+import ru.krasview.kvlib.indep.consts.TypeConsts;
 import ru.krasview.secret.ApiConst;
 
 import android.app.Activity;
@@ -43,6 +44,13 @@ public class AllShowList extends UserShowList{
 	@Override
 	public void setConstData(){
 		Map<String, Object> m;
+		if(ListAccount.fromLauncher){
+			m = new HashMap<String, Object>();
+	    	m.put("type", TypeConsts.MOVIE);
+	    	m.put("name", "!!Фильмы!!");
+	    	data.add(m);
+	    }
+		
 		if(account.isKrasviewAccount() && ListAccount.fromLauncher){
 			m = new HashMap<String, Object>();
 			m.put("type", "my_shows_all_s");
