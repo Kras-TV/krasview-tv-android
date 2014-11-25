@@ -9,15 +9,14 @@ import ru.krasview.secret.ApiConst;
 import android.content.Context;
 
 public class AllAnimeList extends AllShowList{
-
 	public AllAnimeList(Context context){
 		super(context);
 	}
-	
+
 	protected String getApiAddress(){
 		return ApiConst.ANIME;
 	}
-	
+
 	@Override
 	public void setConstData(){
 		Map<String, Object> m;

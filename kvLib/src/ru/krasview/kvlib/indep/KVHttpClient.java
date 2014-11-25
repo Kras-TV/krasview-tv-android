@@ -29,33 +29,31 @@ import android.net.Uri;
 import android.os.AsyncTask;
 
 public class KVHttpClient {
-	
 	public static String getXML(String address, String params)
 	{
 		return getXML(addParams(address, params));
 	}
-	
-	public static String getXML(String address)
-    {
-    	String line = "";
-        try {
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet(address);
-            HttpResponse httpResponse = httpClient.execute(httpGet);
-            HttpEntity httpEntity = httpResponse.getEntity();
-           if(httpEntity!=null){
-        	   line = EntityUtils.toString(httpEntity, "UTF-8");
-            }
-        } catch (UnsupportedEncodingException e) {
-            line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
-        } catch (MalformedURLException e) {
-            line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
-        } catch (IOException e) {
-            line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
-        }
-        return line;
-    }
-	
+
+	public static String getXML(String address) {
+	String line = "";
+	try {
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		HttpGet httpGet = new HttpGet(address);
+		HttpResponse httpResponse = httpClient.execute(httpGet);
+		HttpEntity httpEntity = httpResponse.getEntity();
+		if(httpEntity!=null){
+			line = EntityUtils.toString(httpEntity, "UTF-8");
+		}
+	} catch (UnsupportedEncodingException e) {
+		line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
+	} catch (MalformedURLException e) {
+		line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
+	} catch (IOException e) {
+		line = "<results status=\"error\"><msg>Can't connect to server</msg></results>";
+	}
+	return line;
+	}
+
 	protected static String addParams(String address, String params){
 		if(address == null||Uri.parse(address) == null){
 			return "";
@@ -64,7 +62,7 @@ public class KVHttpClient {
 			params = "";
 		}
 		if(Uri.parse(address) != null && Uri.parse(address).getQuery() == null){
-			address = address + "?" ;    	
+			address = address + "?" ;
 		}else{
 			address = address + "&" ;
 		}
@@ -73,36 +71,33 @@ public class KVHttpClient {
 		}
 		return address;
 	}
-	
+
 	public static void getXMLAsync(String address, String params, OnLoadCompleteListener listener)
 	{
 		getXMLAsyncTask task = new getXMLAsyncTask();
-	  	task.execute(address, params, listener);
+		task.execute(address, params, listener);
 	}
-	    
+
 	private static class getXMLAsyncTask extends AsyncTask<Object, Object, String>
 	{
 		OnLoadCompleteListener listener1;
-		String address = null;			
-		
+		String address = null;
+
 		@Override
-		protected String doInBackground(Object... params) 
-		{
+		protected String doInBackground(Object... params) {
 			listener1 = (OnLoadCompleteListener)params[2];
 			address = (String)params[0];
-			return getXML(address, (String)params[1]);	
+			return getXML(address, (String)params[1]);
 		}
 		
 		@Override
-		protected void onPostExecute(String result)
-		{
+		protected void onPostExecute(String result) {
 			listener1.loadComplete(address, result);
 			listener1.loadComplete(result);
 		}
 	};
-	
-	public static Bitmap getImage(String adress) 
-	{
+
+	public static Bitmap getImage(String adress) {
 		URL url = null;
 		Bitmap bmp;
 		try {
@@ -131,40 +126,35 @@ public class KVHttpClient {
 		bmp = BitmapFactory.decodeStream(is);
 		return bmp;
 	}
-	
-	public static String getXMLFromFile(String addres, Context context)
-    {
-    	String xmlString = null;
-        AssetManager am = context.getAssets();
-        try {
-            InputStream is = am.open(addres);
-            int length = is.available();
-            byte[] data = new byte[length];
-            is.read(data);
-            xmlString = new String(data);
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        return xmlString;
-    }
-	
-	public static HttpResponse post(String address, String id, String msg)
-    {
-        DefaultHttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost(address);
-        HttpResponse response = null;
-        try {
-        	List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-        	nameValuePairs.add(new BasicNameValuePair(id, msg));
-        	httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-        	response = httpClient.execute(httpPost);
- 
-        } catch (UnsupportedEncodingException e) {
-        } catch (MalformedURLException e) {
-        } catch (IOException e) {
-        }
-        return response;
-    }
-	
 
+	public static String getXMLFromFile(String addres, Context context) {
+		String xmlString = null;
+		AssetManager am = context.getAssets();
+		try {
+			InputStream is = am.open(addres);
+			int length = is.available();
+			byte[] data = new byte[length];
+			is.read(data);
+			xmlString = new String(data);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return xmlString;
+	}
+
+	public static HttpResponse post(String address, String id, String msg) {
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		HttpPost httpPost = new HttpPost(address);
+		HttpResponse response = null;
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			nameValuePairs.add(new BasicNameValuePair(id, msg));
+			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			response = httpClient.execute(httpPost);
+		} catch (UnsupportedEncodingException e) {
+		} catch (MalformedURLException e) {
+		} catch (IOException e) {
+		}
+		return response;
+	}
 }

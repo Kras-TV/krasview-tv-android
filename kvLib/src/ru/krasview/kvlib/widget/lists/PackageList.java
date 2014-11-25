@@ -24,98 +24,96 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class PackageList extends List{
-	
 	OnLoadCompleteListener mOnLoadCompleteListener;
 
 	public PackageList(Context context, Map<String, Object> map){
 		super(context, map);
 	}
-	
+
 	@Override
 	protected boolean showBilling(){
 		return false;
 	}
-	
+
 	@Override
 	protected int getAuthRequest(){
 		return AuthRequestConst.AUTH_TV;
 	}
-	
+
 	@Override
 	protected String getApiAddress() {
 		return ApiConst.PACKET;
 	}
-	
+
 	@Override
 	public void setConstData(){
 		Map<String, Object> m;
 		m = new HashMap<String, Object>();
 		m.put("type", "favorite_tv");
-	    m.put("name", "Избранные телеканалы");
-	    m.put("name", "пакет \"Полный\"");
+		m.put("name", "Избранные телеканалы");
+		m.put("name", "пакет \"Полный\"");
 		m.put("id", "1" );
 		m.put("product", "portion" );
 		String sku = "month.1";
 		m.put("sku", sku);
-	    data.add(m);
+		data.add(m);
 	}
-	
+
 	@Override
 	protected CombineSimpleAdapter createAdapter(){
 		return new CombineSimpleAdapter(this, data, getApiAddress(), getAuthRequest()){
 			
 			class PackageViewHolder 
 			{
-		        TextView name;
-		        TextView price;
-		        TextView productType;
-		    }
-			
+				TextView name;
+				TextView price;
+				TextView productType;
+			}
+
 			@SuppressWarnings("unchecked")
 			@Override
-		    public View getView(int position, View convertView, ViewGroup parent){
+			public View getView(int position, View convertView, ViewGroup parent){
 				Map<String,Object> map = (Map<String, Object>)getItem(position);
 				PackageViewHolder holder;
-				if(convertView == null){	
+				if(convertView == null){
 					LayoutInflater inflater = (LayoutInflater) parent.getContext()
-				                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 					convertView = inflater.inflate(R.layout.kv_multi_item_billing, parent, false);
 					holder = new PackageViewHolder();
 					holder.name = (TextView) convertView.findViewById(R.id.txt);
 					holder.price = (TextView) convertView.findViewById(R.id.price);
 					holder.productType = (TextView) convertView.findViewById(R.id.productType);
 					convertView.setTag(holder);
-				 }else{
+				}else{
 					 holder = (PackageViewHolder) convertView.getTag();
-				 }
-				 holder.name.setText( (CharSequence) map.get("name"));
-				 holder.price.setText( (CharSequence) map.get("price"));
-				 if(((CharSequence) map.get("productType")) == null 
-						 || ((CharSequence) map.get("productType")).equals("")){
-					 holder.productType.setVisibility(GONE);
-				 }else{
-					 holder.productType.setVisibility(VISIBLE);
-				 }
-				 holder.productType.setText( (CharSequence) map.get("productType"));
-				 return convertView;
+				}
+				holder.name.setText( (CharSequence) map.get("name"));
+				holder.price.setText( (CharSequence) map.get("price"));
+				if(((CharSequence) map.get("productType")) == null 
+						|| ((CharSequence) map.get("productType")).equals("")){
+					holder.productType.setVisibility(GONE);
+				}else{
+					holder.productType.setVisibility(VISIBLE);
+				}
+				holder.productType.setText( (CharSequence) map.get("productType"));
+				return convertView;
 			}
 
 			@Override
 			protected void postExecute(){
 				complite("");
-			}	
-		};	
+			}
+		};
 	}
-	
-	
+
 	public OnLoadCompleteListener getOnLoadCompleteListener(){
 		return mOnLoadCompleteListener;
 	}
-	
+
 	public void setOnLoadCompleteListener(OnLoadCompleteListener listener){
 		mOnLoadCompleteListener = listener;
 	}
-	
+
 	private void complite(String result)
 	{
 		if(mOnLoadCompleteListener != null){
@@ -135,7 +133,7 @@ public class PackageList extends List{
 		int numOfChannel = nListChannel.getLength();
 		for (int nodeIndex = 0; nodeIndex < numOfChannel; nodeIndex++){
 			Node locNode = nListChannel.item(nodeIndex);
-			Map<String, Object> m = new HashMap<String, Object>();		
+			Map<String, Object> m = new HashMap<String, Object>();
 			m.put("name", Parser.getValue("name", locNode) );
 			m.put("id", Parser.getValue("id", locNode) );
 			m.put("product", "subscription" );
@@ -144,7 +142,7 @@ public class PackageList extends List{
 			if(task.isCancelled()){
 				return;
 			}
-			m = new HashMap<String, Object>();		
+			m = new HashMap<String, Object>();
 			m.put("name", Parser.getValue("name", locNode));
 			m.put("id", Parser.getValue("id", locNode) );
 			m.put("product", "portion" );

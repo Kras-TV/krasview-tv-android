@@ -16,7 +16,6 @@ import android.content.Context;
 import android.text.Html;
 
 public class DateList extends List{
-	
 	public DateList(Context context, Map<String, Object> map){
 		super(context, map);
 	}
@@ -59,7 +58,5 @@ public class DateList extends List{
 			task.onStep(m);
 			return;
 		}
-		
 	}
-
 }

@@ -19,15 +19,13 @@ import android.app.Activity;
 import android.content.Context;
 
 public class TVList extends List{
-	
 	protected boolean firstRefresh;
 
-	public TVList(Context context) 
-	{
+	public TVList(Context context) {
 		super(context, null);
 		firstRefresh = true;
 	}
-	
+
 	@Override
 	protected String getApiAddress() {
 		return ApiConst.TV;
@@ -50,34 +48,32 @@ public class TVList extends List{
 	
 	private void restartTimer()
 	{
-		deleteTimer();	
-		timer = new Timer();		 
-	    timer.schedule( new TimerTask(){
-
+		deleteTimer();
+		timer = new Timer();
+		timer.schedule( new TimerTask() {
 			@Override
-			public void run() 
-			{
-				if(getAdapter()!=null&&!firstRefresh){
+			public void run() {
+				if(getAdapter()!=null&&!firstRefresh) {
 					refreshCurrentProgram();
 				}
 				firstRefresh = false;
 			}
-	    }, 0, 1000*60);
+		}, 0, 1000*60);
 	}
-	
+
 	@Override
 	public void enter(){
 		super.enter();
 		restartTimer();
 	}
-	
+
 	@Override
 	public void exit(){
 		super.exit();
 		deleteTimer();
 	}
-	
-	private void refreshCurrentProgram(){
+
+	private void refreshCurrentProgram() {
 		java.util.List<Map<String, Object>> local_data = getAdapter().getData();
 		for(int i=0; i<local_data.size();i++){
 			Map<String, Object> item = local_data.get(i);
@@ -98,13 +94,13 @@ public class TVList extends List{
 		Map<String, Object> m;
 		m = new HashMap<String, Object>();
 		m.put("type", "favorite_tv");
-	    m.put("name", "Избранные телеканалы");
-	    data.add(m);    
-	   
-	    m = new HashMap<String, Object>();
+		m.put("name", "Избранные телеканалы");
+		data.add(m);
+
+		m = new HashMap<String, Object>();
 		m.put("type", "record");
-	    m.put("name", "Записи");
-	    data.add(m);
+		m.put("name", "Записи");
+		data.add(m);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -119,14 +115,14 @@ public class TVList extends List{
 		NodeList nListChannel = mDocument.getElementsByTagName("channel");
 		int numOfChannel = nListChannel.getLength();
 		Map<String, Object> m;
-		if(numOfChannel == 0){
+		if(numOfChannel == 0) {
 			m = new HashMap<String, Object>();
 			m.put("name", "<пусто>");
 			m.put("type", null);
 			task.onStep(m);
 			return;
 		}
-		for (int nodeIndex = 0; nodeIndex < numOfChannel; nodeIndex++){
+		for (int nodeIndex = 0; nodeIndex < numOfChannel; nodeIndex++) {
 			Node locNode = nListChannel.item(nodeIndex);
 			m = new HashMap<String, Object>();
 			m.put("id", Parser.getValue("id", locNode));
@@ -136,7 +132,7 @@ public class TVList extends List{
 			m.put("state",Parser.getValue("state", locNode));
 			m.put("star",Parser.getValue("star", locNode));
 			m.put("type", "channel" );
-			if(task.isCancelled()){
+			if(task.isCancelled()) {
 				return;
 			}
 			task.onStep(m);

@@ -41,12 +41,11 @@ class LoadNewSeriesNumber extends AsyncTask<Void, Void, Integer>
 			return nListChannel.getLength()-1;
 		}
 	}
-	
-	@Override 
+
+	@Override
 	protected void onPostExecute(Integer result)
 	{
 		mMap.put("new_series", result);
 		((CombineSimpleAdapter) mAdapter).notifyDataSetChanged();
-	} 
-	
+	}
 }

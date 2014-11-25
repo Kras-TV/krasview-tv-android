@@ -18,92 +18,90 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 
-public class SearchFragment extends Fragment implements OnTabChangeListener
-{
-	
+public class SearchFragment extends Fragment implements OnTabChangeListener {
 	private final static String TAB_1 = "tab1";
 	private final static String TAB_2 = "tab2";
 	private final static String TAB_3 = "tab3";
 	TabHost host;
-	
+
 	Context mContext;
-	
+
 	String search_str ="";
-	
-	public void onCreate (Bundle savedInstanceState){
+
+	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-		      Bundle savedInstanceState) {
-			host = (TabHost) inflater.inflate(R.layout.my_tab_host, null) ;
-			host.setup();
-			TabHost.TabSpec tabSpec;
-	        
-	        tabSpec = host.newTabSpec(TAB_1);
-	        tabSpec.setContent(TabFactory);
-	        tabSpec.setIndicator("Телевидение");
-	        //host.addTab(tabSpec);
-	        
-	        tabSpec = host.newTabSpec(TAB_2);
-	        tabSpec.setContent(TabFactory);
-	        tabSpec.setIndicator("Сериалы");
-	        host.addTab(tabSpec);
-	        
-	        tabSpec = host.newTabSpec(TAB_3);
-	        tabSpec.setContent(TabFactory);
-	        tabSpec.setIndicator("Аниме");
-	        host.addTab(tabSpec);
-	        
-	        host.setOnTabChangedListener(this);
-	        
-		    return  host;
-		  }
-	
+
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		host = (TabHost) inflater.inflate(R.layout.my_tab_host, null) ;
+		host.setup();
+		TabHost.TabSpec tabSpec;
+
+		tabSpec = host.newTabSpec(TAB_1);
+		tabSpec.setContent(TabFactory);
+		tabSpec.setIndicator("Телевидение");
+		//host.addTab(tabSpec);
+
+		tabSpec = host.newTabSpec(TAB_2);
+		tabSpec.setContent(TabFactory);
+		tabSpec.setIndicator("Сериалы");
+		host.addTab(tabSpec);
+
+		tabSpec = host.newTabSpec(TAB_3);
+		tabSpec.setContent(TabFactory);
+		tabSpec.setIndicator("Аниме");
+		host.addTab(tabSpec);
+
+		host.setOnTabChangedListener(this);
+
+		return  host;
+	}
+
 	TabHost.TabContentFactory TabFactory = new TabHost.TabContentFactory() {
 
 		@Override
 		public View createTabContent(String tag) {
-			
-			if(mContext == null){
+
+			if(mContext == null) {
 				return null;
 			}
-			if(tag.equals(TAB_1)){
+			if(tag.equals(TAB_1)) {
 				NewAnimator result = new NewAnimator(mContext, new NavigationViewFactory());
 				result.init("sublist_tv");
 				return result;
-			}else if(tag.equals(TAB_2)){
+			} else if(tag.equals(TAB_2)) {
 				NewAnimator result = new NewAnimator(mContext, new NavigationViewFactory());
 				result.init("search_show");
 				return result;
-			}else if(tag.equals(TAB_3)){
+			} else if(tag.equals(TAB_3)) {
 				NewAnimator result = new NewAnimator(mContext, new NavigationViewFactory());
 				result.init("search_anime");
 				return result;
 			}
 			return null;
-		}};
-
-		public void onAttach (Activity activity){
-			super.onAttach(activity);
-			mContext = activity;
 		}
-		
-	public void goSearch(String str){
+	};
+
+	public void onAttach (Activity activity) {
+		super.onAttach(activity);
+		mContext = activity;
+	}
+
+	public void goSearch(String str) {
 		search_str = str;
 		((PropotionerView)((NewAnimator)host.getCurrentView()).getCurrentView()).goSearch(str);
 	}
-		
-	public boolean dispatchKeyEvent (KeyEvent event){
+
+	public boolean dispatchKeyEvent (KeyEvent event) {
 		return host.getCurrentView().dispatchKeyEvent(event);
 	}
-	
-	public void home(){
+
+	public void home() {
 		search_str = "";
 		((NewAnimator)host.getCurrentView()).home();
 	}
-	
-	public void refresh(){
+
+	public void refresh() {
 		((NewAnimator)host.getCurrentView()).refresh();
 	}
 

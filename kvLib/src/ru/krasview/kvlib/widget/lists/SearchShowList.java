@@ -17,7 +17,6 @@ import ru.krasview.secret.ApiConst;
 import ru.krasview.kvlib.widget.List;
 
 public class SearchShowList extends List implements SearchInterface{
-
 	public SearchShowList(Context context) {
 		super(context, null);
 	}
@@ -27,10 +26,10 @@ public class SearchShowList extends List implements SearchInterface{
 		getAdapter().setAddress(getApiAddress() + "?search=" + str);
 		this.refresh();
 	}
-	
+
 	@Override
 	protected String getApiAddress() {
-		return ApiConst.SHOW;	
+		return ApiConst.SHOW;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -56,9 +55,7 @@ public class SearchShowList extends List implements SearchInterface{
 			if(task.isCancelled()){
 				return;
 			}
-			task.onStep(m);	
+			task.onStep(m);
 		}
-		
 	}
-
 }

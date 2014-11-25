@@ -10,9 +10,9 @@ import android.widget.FrameLayout;
 /** @class PropotionerView
 @brief Класс-обертка для помещения View в Animator.
 
-Позволяет складывать в Animator как View, реализующие интерфейсы 
+Позволяет складывать в Animator как View, реализующие интерфейсы
 ViewPropotionerInterface и SearchInterface, так и не реализующие их.
-Также позволяет содержащимся в Animator объектам View 
+Также позволяет содержащимся в Animator объектам View
 предлагать новый View-объект аниматору.
 */
 public class PropotionerView extends FrameLayout implements ViewPropotionerInterface, 
@@ -21,7 +21,7 @@ public class PropotionerView extends FrameLayout implements ViewPropotionerInter
 	private ViewProposeListener mViewProposeListener;
 	private ViewPropotionerInterface viewIntrerface;
 	private SearchInterface searchInterface;
-	
+
 	public PropotionerView(View v, ViewProposeListener l){
 		super(v.getContext());
 		addView(v);
@@ -37,7 +37,7 @@ public class PropotionerView extends FrameLayout implements ViewPropotionerInter
 		}
 		setViewProposeListener(l);
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	private static boolean implementsInterface(Object object, Class inter){
 		if(inter.isInstance(object)){
@@ -46,17 +46,17 @@ public class PropotionerView extends FrameLayout implements ViewPropotionerInter
 			 return false;
 		 }
 	}
-	
+
 //--------------------------------------------------------------------
 // Implementation of ViewPropotionerInterface
 //--------------------------------------------------------------------
-	
+
 	@Override
 	public void setViewProposeListener(ViewProposeListener l){
 		if(viewIntrerface != null){
 			viewIntrerface.setViewProposeListener(this);
 		}
-		mViewProposeListener = l;		
+		mViewProposeListener = l;
 	}
 
 	@Override
@@ -92,14 +92,14 @@ public class PropotionerView extends FrameLayout implements ViewPropotionerInter
 			viewIntrerface.exit();
 		}
 	}
-	
+
 //--------------------------------------------------------------------
 // Implementation of ViewProposeListener
 //--------------------------------------------------------------------
-	
+
 	@Override
 	public void onViewProposed(View parent, View v, String uri, int index) {
-		onViewProposed(parent,  v);	
+		onViewProposed(parent,  v);
 	}
 
 	@Override
@@ -110,12 +110,11 @@ public class PropotionerView extends FrameLayout implements ViewPropotionerInter
 //--------------------------------------------------------------------
 // Implementation of SearchInterface
 //--------------------------------------------------------------------
-	
+
 	@Override
-    public void goSearch(String str) {
+	public void goSearch(String str) {
 		if(searchInterface != null){
 			searchInterface.goSearch(str);
 		}
 	}
-
 }

@@ -7,7 +7,6 @@ import ru.krasview.secret.ApiConst;
 import android.content.Context;
 
 public class OneSeasonSeriesList extends AllSeriesList {
-
 	public OneSeasonSeriesList(Context context, Map<String, Object> map) {
 		super(context, map);
 	}
@@ -16,5 +15,4 @@ public class OneSeasonSeriesList extends AllSeriesList {
 	protected String getApiAddress(){
 		return ApiConst.SEASON +"?id=" + getMap().get("id");
 	}
-	
 }

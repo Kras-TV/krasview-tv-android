@@ -12,7 +12,6 @@ import ru.krasview.kvlib.interfaces.ViewPropotionerInterface;
 import ru.krasview.kvlib.widget.SerialDescription;
 
 public class Serial extends SerialDescription implements ViewPropotionerInterface {
-	
 	private Map<String, Object> mMap;
 
 	public Serial(Context context, Map<String, Object> map) {
@@ -39,7 +38,7 @@ public class Serial extends SerialDescription implements ViewPropotionerInterfac
 	public void refresh() {
 
 	}
-	
+
 	@Override
 	public void enter(){
 	}
@@ -47,5 +46,4 @@ public class Serial extends SerialDescription implements ViewPropotionerInterfac
 	@Override
 	public void exit() {
 	}
-
 }

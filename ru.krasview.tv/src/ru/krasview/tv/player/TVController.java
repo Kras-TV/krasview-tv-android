@@ -29,28 +29,27 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class TVController extends FrameLayout {
-	
 	VideoInterface mVideo;
 	Map<String, Object> mMap;
-	
+
 	ProgressBar mProgressBar;
 	TextView mTitle;
 	TextView mTime;
 	TextView mInfo;
 	ImageButton mStop;
 	ImageButton mSize;
-	
-    private static final int SURFACE_BEST_FIT = 0;
-    private static final int SURFACE_FIT_HORIZONTAL = 1;
-    private static final int SURFACE_FIT_VERTICAL = 2;
-    private static final int SURFACE_FILL = 3;
-    private static final int SURFACE_16_9 = 4;
-    private static final int SURFACE_4_3 = 5;
-    private static final int SURFACE_ORIGINAL = 6;
-    private static final int SURFACE_FROM_SETTINGS = 7;
-	
+
+	private static final int SURFACE_BEST_FIT = 0;
+	private static final int SURFACE_FIT_HORIZONTAL = 1;
+	private static final int SURFACE_FIT_VERTICAL = 2;
+	private static final int SURFACE_FILL = 3;
+	private static final int SURFACE_16_9 = 4;
+	private static final int SURFACE_4_3 = 5;
+	private static final int SURFACE_ORIGINAL = 6;
+	private static final int SURFACE_FROM_SETTINGS = 7;
+
 	Handler mHandler = new TVControllerHandler(this);
-	
+
 	static final int GET_INFO = 1;
 
 	public TVController(Context context, AttributeSet attrs, int defStyle) {
@@ -68,10 +67,10 @@ public class TVController extends FrameLayout {
 		init();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	private void init(){
-		LayoutInflater inflater = (LayoutInflater)   getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+
+
+	private void init() {
+		LayoutInflater inflater = (LayoutInflater)   getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.kv_controller_tv, this, true);
 		mTitle = (TextView)findViewById(R.id.progress_overlay_tv_name);
 		mTime = (TextView)findViewById(R.id.progress_overlay_tv_time);
@@ -81,36 +80,34 @@ public class TVController extends FrameLayout {
 		mStop.setOnClickListener(listener);
 		mSize = (ImageButton)findViewById(R.id.progress_overlay_tv_size);
 		mSize.setOnClickListener(listener);
-		
-		mProgressBar.setProgress(0);
-	    mTitle.setText("");
-	    mTime.setText("");
-		
-	}
-	
-	OnClickListener listener = new OnClickListener(){
 
+		mProgressBar.setProgress(0);
+		mTitle.setText("");
+		mTime.setText("");
+	}
+
+	OnClickListener listener = new OnClickListener() {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
 			//switch(arg0.getId()){
-			if(arg0.getId()==R.id.progress_overlay_tv_pause){
-			//case R.id.progress_overlay_tv_pause:
-				if(mVideo == null){
+			if(arg0.getId()==R.id.progress_overlay_tv_pause) {
+				//case R.id.progress_overlay_tv_pause:
+				if(mVideo == null) {
 					return;
 				}
-				if(mVideo.isPlaying()){
+				if(mVideo.isPlaying()) {
 					mVideo.stop();
 					mStop.setBackgroundResource(R.drawable.ic_new_play);
-				}else{
+				} else {
 					mVideo.play();
 					mStop.setBackgroundResource(R.drawable.ic_stop);
 				}
 				//break;
-				}else if(arg0.getId()==R.id.progress_overlay_tv_size){
-			//case R.id.progress_overlay_tv_size:
+			} else if(arg0.getId()==R.id.progress_overlay_tv_size) {
+				//case R.id.progress_overlay_tv_size:
 				String msg = "";
-				switch(mVideo.changeSizeMode()){
+				switch(mVideo.changeSizeMode()) {
 				case SURFACE_BEST_FIT:
 					msg = "Оптимально";
 					break;
@@ -121,7 +118,7 @@ public class TVController extends FrameLayout {
 					msg = "По вертикали";
 					break;
 				case SURFACE_FILL:
-					
+
 					msg = "Заполнение";
 					break;
 				case SURFACE_16_9:
@@ -135,39 +132,38 @@ public class TVController extends FrameLayout {
 					break;
 				case SURFACE_FROM_SETTINGS:
 					msg = "Из настроек";
-					break;	
-				}			
+					break;
+				}
 
 				((VideoActivity)getContext()).showInfo(msg, 1000);
 				//break;
-				}
-		//	}
-		}};
-		
-		/*private void showInfo(CharSequence text, int duration) {
-	        mInfo.setVisibility(View.VISIBLE);
-	        mInfo.setText(text);
-	        mHandler.removeMessages(FADE_OUT_INFO);
-	        mHandler.sendEmptyMessageDelayed(FADE_OUT_INFO, duration);
-	    }
-		private void showInfo(CharSequence text) {
-	        mInfo.setVisibility(View.VISIBLE);
-	        mInfo.setText(text);
-	        mHandler.removeMessages(FADE_OUT_INFO);
-	    }*/
-	
-	public void setMap(Map<String, Object> map){
+			}
+		}
+	};
+
+	/*private void showInfo(CharSequence text, int duration) {
+	    mInfo.setVisibility(View.VISIBLE);
+	    mInfo.setText(text);
+	    mHandler.removeMessages(FADE_OUT_INFO);
+	    mHandler.sendEmptyMessageDelayed(FADE_OUT_INFO, duration);
+	}
+	private void showInfo(CharSequence text) {
+	    mInfo.setVisibility(View.VISIBLE);
+	    mInfo.setText(text);
+	    mHandler.removeMessages(FADE_OUT_INFO);
+	}*/
+
+	public void setMap(Map<String, Object> map) {
 		mMap = map;
 		mProgressBar.setProgress(85);
 		mHandler.removeMessages(GET_INFO);
 		mHandler.sendEmptyMessage(GET_INFO);
-		mVideo.setVideoAndStart((String) map.get("uri")); 
+		mVideo.setVideoAndStart((String) map.get("uri"));
 	}
-	
-	public void setVideo(VideoInterface video){
+
+	public void setVideo(VideoInterface video) {
 		mVideo = video;
-	    mVideo.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-			
+		mVideo.setOnErrorListener(new MediaPlayer.OnErrorListener() {
 			@Override
 			public boolean onError(MediaPlayer mp, int what, int extra) {
 				((VideoActivity)getContext()).showInfo("Невозможно воспроизвести поток");
@@ -175,126 +171,118 @@ public class TVController extends FrameLayout {
 				return true;
 			}
 		});
-		if(mVideo.getClass().equals(VLCView.class)){
+		if(mVideo.getClass().equals(VLCView.class)) {
 			Drawable d = getResources().getDrawable(R.drawable.po_seekbar);
 			mProgressBar.setProgressDrawable(d);
-			}else if(mVideo.getClass().equals(AVideoView.class)){
-			
+		} else if(mVideo.getClass().equals(AVideoView.class)) {
+
 		}
 	}
-	
+
 	GetInfoTask getInfoTask;
-	
-	public void getInfo(){
-		
+
+	public void getInfo() {
 		Log.i("Debug", "Получить телепрограмму");
-		
-		if (mMap == null){
+
+		if (mMap == null) {
 			return;
 		}
-		
-		if(getInfoTask != null){
+
+		if(getInfoTask != null) {
 			getInfoTask.cancel(true);
 		}
 		getInfoTask = new GetInfoTask();
 		getInfoTask.execute((String)mMap.get("id"));
 	}
-	
-	private static class TVControllerHandler extends Handler{
-		
+
+	private static class TVControllerHandler extends Handler {
 		TVController mTVController;
-		
-		TVControllerHandler(TVController tv){
+
+		TVControllerHandler(TVController tv) {
 			super();
 			mTVController = tv;
 		}
-		
-		 @Override
-	        public void handleMessage(Message msg) {
-	            switch (msg.what) {
-	          //  case TVController.FADE_OUT_INFO:
-	           // 	mTVController.fadeOutInfo();
-	            //	break;
-	            case TVController.GET_INFO:
-	            	mTVController.getInfo();
-	            	removeMessages(GET_INFO);
-	        		this.sendEmptyMessageDelayed(GET_INFO, 60*1000);
-	            	break;
-	            }
-	        }
+
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			//  case TVController.FADE_OUT_INFO:
+			// 	mTVController.fadeOutInfo();
+			//	break;
+			case TVController.GET_INFO:
+				mTVController.getInfo();
+				removeMessages(GET_INFO);
+				this.sendEmptyMessageDelayed(GET_INFO, 60*1000);
+				break;
+			}
+		}
 	}
-	
-/*	 private void fadeOutInfo() {
-	        mInfo.setVisibility(View.INVISIBLE);
-	    }*/
-	
 
-	  class GetInfoTask extends AsyncTask<String, Void, Node> {
+	/*	 private void fadeOutInfo() {
+		        mInfo.setVisibility(View.INVISIBLE);
+		    }*/
 
-	    @Override
-	    protected void onPreExecute() {
-	      super.onPreExecute();
-	     // mProgressBar.setProgress(0);
-	    //  mTitle.setText("");
-	     // mTime.setText("");
-	    }
 
-	    @Override
-	    protected Node doInBackground(String... params) {
-	      
-	      String str = HTTPClient.getXML(ApiConst.RECORD, "id=" + params[0], AuthAccount.AUTH_TYPE_TV);
-	      Document document = Parser.XMLfromString(str);
-	      if(document == null){
-	    	  return null;
-	      }
-	      document.normalizeDocument();
-	      NodeList nList = document.getElementsByTagName("item");
-	      if(nList.getLength() == 0){
-		    	return null;
-		    }
-	      
-	      Node locNode = nList.item(0);
-	      
-	      return locNode;
-	    }
+	class GetInfoTask extends AsyncTask<String, Void, Node> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			// mProgressBar.setProgress(0);
+			//  mTitle.setText("");
+			// mTime.setText("");
+		}
 
-	    @Override
-	    protected void onPostExecute(Node result) {
-	      super.onPostExecute(result);
-	      if(result==null){
-	    	  return;
-	      }
-	      mTitle.setText(Parser.getValue("name", result));
-	      mTime.setText(Parser.getValue("time", result));
-	      
-	      int i;
-	    try{		  
-	    	i = Integer.parseInt(Parser.getValue("percent", result));
-	    }catch(Exception e){
-	    	i=0;  
-	    }	      
-	      mProgressBar.setProgress(i);
-	    }
-	  }
-	  
-	  public boolean dispatchKeyEvent (KeyEvent event){
-		  if(event.getAction() == KeyEvent.ACTION_DOWN){
-	    		switch(event.getKeyCode()){
-	    			case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
-	    				listener.onClick(mStop);
-	    				return true;
-	    			case KeyEvent.KEYCODE_MEDIA_STOP:
-	    				mVideo.stop();
-	    				mStop.setBackgroundResource(R.drawable.ic_new_play);
-	    				return true;
-	    				}
-	    		}
+		@Override
+		protected Node doInBackground(String... params) {
+			String str = HTTPClient.getXML(ApiConst.RECORD, "id=" + params[0], AuthAccount.AUTH_TYPE_TV);
+			Document document = Parser.XMLfromString(str);
+			if(document == null) {
+				return null;
+			}
+			document.normalizeDocument();
+			NodeList nList = document.getElementsByTagName("item");
+			if(nList.getLength() == 0) {
+				return null;
+			}
+
+			Node locNode = nList.item(0);
+
+			return locNode;
+		}
+
+		@Override
+		protected void onPostExecute(Node result) {
+			super.onPostExecute(result);
+			if(result==null) {
+				return;
+			}
+			mTitle.setText(Parser.getValue("name", result));
+			mTime.setText(Parser.getValue("time", result));
+
+			int i;
+			try {
+				i = Integer.parseInt(Parser.getValue("percent", result));
+			} catch(Exception e) {
+				i=0;
+			}
+			mProgressBar.setProgress(i);
+		}
+	}
+
+	public boolean dispatchKeyEvent (KeyEvent event) {
+		if(event.getAction() == KeyEvent.ACTION_DOWN) {
+			switch(event.getKeyCode()) {
+			case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
+				listener.onClick(mStop);
+				return true;
+			case KeyEvent.KEYCODE_MEDIA_STOP:
+				mVideo.stop();
+				mStop.setBackgroundResource(R.drawable.ic_new_play);
+				return true;
+			}
+		}
 		return false;
-		  
-	  }
-	  
-	  public void end(){
-		  
-	  }
+	}
 
+	public void end() {}
 }
