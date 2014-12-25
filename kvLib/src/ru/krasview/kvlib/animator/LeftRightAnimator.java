@@ -20,7 +20,7 @@ public abstract class LeftRightAnimator extends ViewAnimator {
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 
-		data.setData(w, 1000);
+		data.setData(w, 200);
 	}
 
 	@Override
