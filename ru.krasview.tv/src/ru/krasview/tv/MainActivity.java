@@ -164,11 +164,11 @@ public class MainActivity extends KVSearchAndMenuActivity {
 	private void getPrefs() {
 		prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
-		String tv_pl = prefs.getString("video_player_tv", "VLC");
+		String tv_pl = prefs.getString("video_player_tv", "std");
 		if(tv_pl.equals("Стандартный плеер")) {
 			prefs.edit().putString("video_player_tv", "std").commit();
 		}
-		tv_pl = prefs.getString("video_player_serial", "VLC");
+		tv_pl = prefs.getString("video_player_serial", "std");
 		if(tv_pl.equals("Стандартный плеер")) {
 			prefs.edit().putString("video_player_serial", "std").commit();
 		}
