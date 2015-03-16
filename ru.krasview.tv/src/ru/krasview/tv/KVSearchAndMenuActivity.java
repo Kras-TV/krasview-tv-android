@@ -41,11 +41,11 @@ import com.example.kvlib.R;
 public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity 
 									 implements FatalErrorExitListener{
 	
-	AuthAccount account = AuthAccount.getInstance();
+	protected AuthAccount account = AuthAccount.getInstance();
 	
-	EditText editsearch;
-	SearchFragment searchFragment;
-	View searchHost;
+	protected EditText editsearch;
+	protected SearchFragment searchFragment;
+	protected View searchHost;
 	
 	protected abstract void setSearch(boolean a);
 	protected abstract void exit();

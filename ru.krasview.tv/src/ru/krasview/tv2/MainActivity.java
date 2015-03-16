@@ -1,4 +1,4 @@
-package ru.krasview.tv;
+package ru.krasview.tv2;
 
 import ru.krasview.kvlib.animator.NewAnimator;
 import ru.krasview.kvlib.indep.AuthAccount;
@@ -14,6 +14,8 @@ import ru.krasview.kvlib.interfaces.PropotionerView;
 import ru.krasview.kvlib.widget.List;
 import ru.krasview.kvlib.widget.NavigationViewFactory;
 import ru.krasview.secret.ApiConst;
+import ru.krasview.tv.KVSearchAndMenuActivity;
+import ru.krasview.tv.MainAuthActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;

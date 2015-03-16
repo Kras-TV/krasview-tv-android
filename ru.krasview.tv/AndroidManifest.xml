@@ -88,7 +88,7 @@
         </activity>
         
         <activity
-            android:name="ru.krasview.tv.MainActivity"
+            android:name="ru.krasview.tv2.MainActivity"
             android:label="" 
             android:theme="@style/Theme.Sherlock"
             android:configChanges="orientation|keyboardHidden|screenSize">
