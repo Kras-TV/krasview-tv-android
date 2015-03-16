@@ -5,6 +5,7 @@ import java.util.Map;
 import org.videolan.vlc.Util;
 
 import ru.krasview.kvlib.indep.ListAccount;
+import ru.krasview.kvlib.indep.consts.IntentConst;
 
 import com.example.kvlib.R;
 import android.annotation.TargetApi;
@@ -46,7 +47,7 @@ public class VideoActivity extends Activity {
 	
 	private final Handler mHandler = new VideoPlayerHandler(this);
 	
-	final static String ACTION_VIDEO_LIST = "ru.krasview.tv.PLAY_VIDEO_LIST";
+	//final static String ACTION_VIDEO_LIST = "ru.krasview.tv.PLAY_VIDEO_LIST";
 	
     private static final int FADE_OUT = 1;
     private static final int FADE_OUT_INFO = 4;
@@ -69,7 +70,7 @@ public class VideoActivity extends Activity {
 	@SuppressWarnings("unchecked")
 	private void initLayout(){
 		Map<String, Object> map;
-		  if (getIntent().getAction() != null && getIntent().getAction() == ACTION_VIDEO_LIST){
+		  if (getIntent().getAction() != null && getIntent().getAction() == IntentConst.ACTION_VIDEO_LIST){
 	        	current = getIntent().getIntExtra("index", 0);   	
 	        }else{
 	        	current =0;
@@ -129,7 +130,7 @@ public class VideoActivity extends Activity {
     protected void onResume() {
         super.onResume();
         
-        if (getIntent().getAction() != null && getIntent().getAction() == ACTION_VIDEO_LIST){
+        if (getIntent().getAction() != null && getIntent().getAction() == IntentConst.ACTION_VIDEO_LIST){
         	current = getIntent().getIntExtra("index", 0);
         	
         }
