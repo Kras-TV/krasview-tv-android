@@ -3,7 +3,7 @@
     package="ru.krasview.tv_site"
    
     android:versionCode="140"
-    android:versionName="1.2.7 - site">
+    android:versionName="develop">
 
     <uses-sdk
         android:minSdkVersion="8"

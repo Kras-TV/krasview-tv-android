@@ -50,6 +50,10 @@ public class NavigationViewFactory implements Factory {
 														{view = new TVFavoriteRecordList(c);
 		}else if(type.equals(TypeConsts.DATE_LIST))		{view = new DateList(c, map);
 		}else if(type.equals(TypeConsts.RECORD_LIST))	{view = new RecordList(c, map);
+		}else if(type.equals(TypeConsts.MOVIE))			{view = new AllMovieList(c, map);
+		}else if(type.equals("alfabet_movie"))			{view = new AlfabetMovieList(c);
+		}else if(type.equals("letter_movie"))			{view = new LetterMovieList(c, map);
+		}else if(type.equals("search_movie"))			{view = new SearchMovieList(c);
 		}else											{view = get_unknown(type);
 		}
 		if(implementsInterface(view, List.class)){
@@ -73,8 +77,8 @@ public class NavigationViewFactory implements Factory {
 		text.setText("тип " + type);
 		text.setTextSize(30);
 		text.setGravity(Gravity.CENTER);
-		//return text;
-		return null;
+		return text;
+		//return null;
 	}
 	
 	private static View get_null(){
