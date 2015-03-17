@@ -28,5 +28,7 @@ public class TypeConsts {
 	public static final String DATE_LIST		= "channel_date_list";
 	public static final String RECORD_LIST		= "record_list";
 
+	public static final String MOVIE		= "sublist_movie";
+
 	public static final String BILLING		= "billing";
 }

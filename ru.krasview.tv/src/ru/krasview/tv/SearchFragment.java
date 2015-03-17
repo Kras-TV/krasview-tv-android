@@ -39,8 +39,8 @@ public class SearchFragment extends Fragment implements OnTabChangeListener {
 
 		tabSpec = host.newTabSpec(TAB_1);
 		tabSpec.setContent(TabFactory);
-		tabSpec.setIndicator("Телевидение");
-		//host.addTab(tabSpec);
+		tabSpec.setIndicator("Фильмы");
+		host.addTab(tabSpec);
 
 		tabSpec = host.newTabSpec(TAB_2);
 		tabSpec.setContent(TabFactory);
@@ -67,7 +67,7 @@ public class SearchFragment extends Fragment implements OnTabChangeListener {
 			}
 			if(tag.equals(TAB_1)) {
 				NewAnimator result = new NewAnimator(mContext, new NavigationViewFactory());
-				result.init("sublist_tv");
+				result.init("search_movie");
 				return result;
 			} else if(tag.equals(TAB_2)) {
 				NewAnimator result = new NewAnimator(mContext, new NavigationViewFactory());
@@ -107,7 +107,7 @@ public class SearchFragment extends Fragment implements OnTabChangeListener {
 
 	@Override
 	public void onTabChanged(String tabId) {
-		Log.i("Debug", "Открыта вкладка " + host.getCurrentTab());
+		//Log.i("Debug", "Открыта вкладка " + host.getCurrentTab());
 		goSearch(search_str);
 	}
 }
