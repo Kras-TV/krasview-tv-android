@@ -1,9 +1,10 @@
 package org.videolan.vlc.gui;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -14,11 +15,9 @@ import org.apache.http.message.BasicNameValuePair;
 import org.videolan.libvlc.LibVlcUtil;
 import ru.krasview.tv.R;
 
-import android.app.Activity;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompatErrorActivity extends Activity {
     public final static String TAG = "VLC/CompatErrorActivity";

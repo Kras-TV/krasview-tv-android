@@ -4,3 +4,6 @@ libs/
 obj/
 jni/libvlcjni.h
 .settings
+out/
+.idea/
+lib/

@@ -356,7 +356,7 @@ public class VideoActivity extends Activity {
         mHandler.removeMessages(FADE_OUT);
     }
 	
-	void hideInfo(){
+	private void hideInfo(){
 		mInfo.setVisibility(View.GONE);
 	}
 	  

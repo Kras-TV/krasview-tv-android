@@ -152,36 +152,37 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
     	
      return true;
     }
-	
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) 
-		{
-		case R.id.new_game:
-			int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-			if(currentapiVersion >= 11){
-				Intent settingsActivity = new Intent(getBaseContext(), PrMainActivity.class);
-				startActivity(settingsActivity);
-				return true;
-			}else{
-				Intent settingsActivity = new Intent(getBaseContext(), OldPreferenceActivity.class);
-				startActivity(settingsActivity);
-				return true;
-			}
-			
-		case R.id.kv_login_item:
-			return true;
-		case R.id.exit:
-			exit();
-		case R.id.kv_home_item:
-			home();
-			return true;
-		case R.id.kv_refresh_item:
-			refresh();
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
+        int id = item.getItemId();
+		//switch (item.getItemId())
+		//{
+        if(id == R.id.new_game) {
+                int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+                if (currentapiVersion >= 11) {
+                    Intent settingsActivity = new Intent(getBaseContext(), PrMainActivity.class);
+                    startActivity(settingsActivity);
+                    return true;
+                } else {
+                    Intent settingsActivity = new Intent(getBaseContext(), OldPreferenceActivity.class);
+                    startActivity(settingsActivity);
+                    return true;
+                }
+        } else if (id == R.id.kv_login_item) {
+            return true;
+        } else if (id == R.id.exit) {
+            exit();
+        } else if (id == R.id.kv_home_item) {
+            home();
+            return true;
+        } else if (id == R.id.kv_refresh_item) {
+                refresh();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
 	}
 	
 	Map<String, Object> contextMenuMap;
