@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
     package="ru.krasview.tv"
    
     android:versionCode="140"
@@ -7,7 +8,9 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="19"
+        tools:overrideLibrary="com.example.kvlib"
+        />
 
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -21,6 +24,7 @@
     
 
     <application
+            tools:replace="android:icon, android:label, android:theme"
         android:allowBackup="true"
         android:name="org.videolan.vlc.VLCApplication"
         android:icon="@drawable/new_krasview_logo_small"

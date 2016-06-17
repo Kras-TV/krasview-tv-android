@@ -1,0 +1,8 @@
+include ':ru.krasview.tv'
+include ':libraries',
+        ':libraries:ActionBarSherlock',
+        ':libraries:kvLib',
+        ':libraries:kvSecret',
+        ':libraries:SlidingMenu',
+        ':libraries:UniversalImageLoader',
+        ':libraries:WheelView'

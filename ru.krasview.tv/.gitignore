@@ -7,3 +7,9 @@ jni/libvlcjni.h
 out/
 .idea/
 lib/
+build/
+doc/
+
+.gradle
+*.iml
+

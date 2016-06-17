@@ -1,0 +1,5 @@
+evaluationDependsOn(':libraries')
+
+dependencies {
+    project(":ru.krasview.tv")
+}

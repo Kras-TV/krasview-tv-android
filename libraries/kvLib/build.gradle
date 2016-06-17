@@ -1,0 +1,11 @@
+dependencies {
+    compile project(":libraries:kvSecret")
+    compile project(":libraries:UniversalImageLoader")
+}
+
+android{
+    useLibrary  'org.apache.http.legacy'
+    lintOptions {
+        abortOnError false
+    }
+}

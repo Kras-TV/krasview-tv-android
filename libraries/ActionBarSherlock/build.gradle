@@ -1,0 +1,15 @@
+dependencies {
+    compile 'com.android.support:support-v4:19.1.0'
+    testCompile 'junit:junit:4.12'
+}
+
+android {
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 16
+    }
+        lintOptions {
+            abortOnError false
+    }
+}
+
