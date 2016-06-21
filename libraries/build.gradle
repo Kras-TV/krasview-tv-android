@@ -10,7 +10,7 @@ buildscript {
 }
 
 subprojects {
-    apply plugin: 'android-library'
+    apply plugin: 'com.android.library'
 
     android {
         buildToolsVersion = "23.0.3"
