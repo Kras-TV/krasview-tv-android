@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <org.videolan.vlc.widget.VerticalSeekBar
+    <org.videolan1.vlc.widget.VerticalSeekBar
         android:id="@+id/equalizer_seek"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

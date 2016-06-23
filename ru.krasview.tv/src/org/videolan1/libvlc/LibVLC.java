@@ -18,7 +18,7 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-package org.videolan.libvlc;
+package org.videolan1.libvlc;
 
 import java.util.ArrayList;
 import java.util.Map;

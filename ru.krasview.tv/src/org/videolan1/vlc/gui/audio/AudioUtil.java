@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
-package org.videolan.vlc.gui.audio;
+package org.videolan1.vlc.gui.audio;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -30,12 +30,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-import org.videolan.vlc.BitmapCache;
-import org.videolan.vlc.Media;
-import org.videolan.vlc.MurmurHash;
+import org.videolan1.vlc.BitmapCache;
+import org.videolan1.vlc.Media;
+import org.videolan1.vlc.MurmurHash;
 import ru.krasview.tv.R;
-import org.videolan.vlc.Util;
-import org.videolan.vlc.VLCApplication;
+import org.videolan1.vlc.Util;
+import org.videolan1.vlc.VLCApplication;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

@@ -17,11 +17,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
-package org.videolan.vlc;
+package org.videolan1.vlc;
 
 import java.util.Locale;
 
-import org.videolan.vlc.gui.audio.AudioUtil;
+import org.videolan1.vlc.gui.audio.AudioUtil;
 
 import com.nostra13.example.universalimageloader.Constants.Config;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;

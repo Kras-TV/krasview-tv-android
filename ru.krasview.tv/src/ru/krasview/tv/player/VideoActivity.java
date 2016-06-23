@@ -2,7 +2,7 @@ package ru.krasview.tv.player;
 
 import java.util.Map;
 
-import org.videolan.vlc.Util;
+import org.videolan1.vlc.Util;
 
 import ru.krasview.kvlib.indep.ListAccount;
 

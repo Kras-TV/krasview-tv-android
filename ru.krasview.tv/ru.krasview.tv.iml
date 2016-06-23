@@ -7,6 +7,8 @@
     <libelement value="file:///WheelView/bin/wheelview.jar" />
     <libelement value="$ANDROID_SDK$/extras/android/support/v4/android-support-v4.jar" />
     <libelement value="$ANDROID_SDK$/extras/google/play_billing/market_billing_r02.zip" />
+    <libelement value="file:///opt/android-sdk-linux/extras/android/support/v4/android-support-v4.jar" />
+    <libelement value="file:///opt/android-sdk-linux/extras/google/play_billing/market_billing_r02.zip" />
     <conelement value="com.android.ide.eclipse.adt.DEPENDENCIES" />
     <src_description expected_position="6">
       <src_folder value="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK" expected_position="0" />
@@ -26,31 +28,64 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
+    <orderEntry type="library" exported="" name="com.android.ide.eclipse.adt.DEPENDENCIES" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library name="actionbarsherlock.jar">
+        <CLASSES>
+          <root url="file:///ActionBarSherlock/bin/actionbarsherlock.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="kvlib.jar">
+        <CLASSES>
+          <root url="file:///kvLib/bin/kvlib.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="slidingmenu.jar">
+        <CLASSES>
+          <root url="file:///SlidingMenu/bin/slidingmenu.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="wheelview.jar">
+        <CLASSES>
+          <root url="file:///WheelView/bin/wheelview.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library name="android-support-v4.jar">
+        <CLASSES>
+          <root url="file:///opt/android-sdk-linux/extras/android/support/v4/android-support-v4.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="module-library" exported="">
       <library name="market_billing_r02.zip">
         <CLASSES>
-          <root url="$ANDROID_SDK$/extras/google/play_billing/market_billing_r02.zip" />
+          <root url="file:///opt/android-sdk-linux/extras/google/play_billing/market_billing_r02.zip" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="SlidingMenu" exported="" />
-    <orderEntry type="module" module-name="kvLib" exported="" />
-    <orderEntry type="module" module-name="WheelView" exported="" />
-    <orderEntry type="module" module-name="ActionBarSherlock" exported="" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/opt/android-sdk-linux/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module" module-name="UniversalImageLoader" exported="" />
   </component>
 </module>

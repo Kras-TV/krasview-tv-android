@@ -1,4 +1,4 @@
-package org.videolan.vlc;
+package org.videolan1.vlc;
 
 /** Murmur hash 2.0.
  *

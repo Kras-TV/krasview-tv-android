@@ -3,11 +3,11 @@ package ru.krasview.tv.player;
 import java.util.ArrayList;
 import java.util.Map;
 
-import org.videolan.libvlc.EventHandler;
-import org.videolan.libvlc.IVideoPlayer;
-import org.videolan.libvlc.LibVLC;
-import org.videolan.libvlc.LibVlcException;
-import org.videolan.vlc.Util;
+import org.videolan1.libvlc.EventHandler;
+import org.videolan1.libvlc.IVideoPlayer;
+import org.videolan1.libvlc.LibVLC;
+import org.videolan1.libvlc.LibVlcException;
+import org.videolan1.vlc.Util;
 
 
 import ru.krasview.tv.R;

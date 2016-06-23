@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <org.videolan.vlc.gui.expandable.SpeedSelector
+        <org.videolan1.vlc.gui.expandable.SpeedSelector
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -20,7 +20,7 @@
             android:background="#8FFF"
             tools:ignore="PxUsage" />
 
-        <org.videolan.vlc.gui.expandable.TimeSleep
+        <org.videolan1.vlc.gui.expandable.TimeSleep
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -30,7 +30,7 @@
             android:background="#8FFF"
             tools:ignore="PxUsage" />
 
-        <org.videolan.vlc.gui.expandable.JumpToTime
+        <org.videolan1.vlc.gui.expandable.JumpToTime
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

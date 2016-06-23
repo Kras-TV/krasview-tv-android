@@ -26,7 +26,7 @@
     <application
             tools:replace="android:icon, android:label, android:theme"
         android:allowBackup="true"
-        android:name="org.videolan.vlc.VLCApplication"
+        android:name="org.videolan1.vlc.VLCApplication"
         android:icon="@drawable/new_krasview_logo_small"
         android:logo="@drawable/logo_bar"
         android:label="krasview"
@@ -117,16 +117,16 @@
           
         </activity-->
                        
-        <service android:name="org.videolan.vlc.AudioService" />
+        <service android:name="org.videolan1.vlc.AudioService" />
 
         <receiver
-            android:name="org.videolan.vlc.PhoneStateReceiver">
+            android:name="org.videolan1.vlc.PhoneStateReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name="org.videolan.vlc.RemoteControlClientReceiver">
+        <receiver android:name="org.videolan1.vlc.RemoteControlClientReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>

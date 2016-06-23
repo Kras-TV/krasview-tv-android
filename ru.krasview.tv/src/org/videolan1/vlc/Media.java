@@ -18,16 +18,16 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-package org.videolan.vlc;
+package org.videolan1.vlc;
 
 
 
 import java.util.HashSet;
 import java.util.Locale;
 
-import org.videolan.libvlc.LibVLC;
-import org.videolan.libvlc.LibVlcException;
-import org.videolan.libvlc.TrackInfo;
+import org.videolan1.libvlc.LibVLC;
+import org.videolan1.libvlc.LibVlcException;
+import org.videolan1.libvlc.TrackInfo;
 
 import ru.krasview.tv.R;
 
