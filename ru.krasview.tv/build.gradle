@@ -40,11 +40,12 @@ dependencies {
     compile project(':libvlc')
     compile project(':api')
     compile project(':axmlrpc')
-    compile project(":libraries:ActionBarSherlock")
     compile project(":libraries:kvLib")
     compile project(":libraries:kvSecret")
     compile project(":libraries:SlidingMenu")
     compile project(":libraries:UniversalImageLoader")
     compile project(":libraries:WheelView")
+    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:appcompat-v7:18.0.+'
     testCompile 'junit:junit:4.12'
 }

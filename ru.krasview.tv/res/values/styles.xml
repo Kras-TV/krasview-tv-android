@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     
-    <style name="Theme.MyTheme" parent="@style/Theme.Sherlock" />
+    <style name="Theme.MyTheme" parent="Theme.AppCompat.Light" />
   	<style name="Theme.MyTheme.NoTitleBar" parent="@android:style/Theme.Black.NoTitleBar" />
     <style name="Theme.MyTheme.NoTitleBar.Fullscreen" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     
@@ -14,9 +14,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.VLC" parent="Theme.Sherlock.Light">
+    <style name="Theme.VLC" parent="Theme.AppCompat.Light">
         <item name="actionBarStyle">@style/ActionBar</item>
-        <item name="windowContentOverlay">@drawable/actionbar_shadow</item>
         <item name="android:listViewStyle">@style/Theme.VLC.List</item>
         <item name="android:gridViewStyle">@style/Theme.VLC.List</item>
         <item name="android:expandableListViewStyle">@style/Theme.VLC.List</item>
@@ -68,7 +67,7 @@
         <item name="android:windowBackground">@color/black</item>
     </style>
 
-    <style name="ActionBar" parent="Widget.Sherlock.Light.ActionBar">
+    <style name="ActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@drawable/actionbar_background</item>
         <item name="background">@drawable/actionbar_background</item>
     </style>
@@ -76,7 +75,6 @@
     <style name="Theme.VLC.AlertMenu" parent="android:Theme.Dialog">
         <item name="android:windowBackground">@null</item>
         <item name="android:windowFrame">@null</item>
-        <item name="windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowIsTranslucent">true</item>
