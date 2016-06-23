@@ -12,6 +12,10 @@ buildscript {
 subprojects {
     apply plugin: 'com.android.library'
 
+    dependencies {
+        compile 'com.android.support:support-v4:19.1.0'
+    }
+
     android {
         buildToolsVersion = "23.0.3"
         compileSdkVersion = 23

@@ -6,3 +6,10 @@ include ':libraries',
         ':libraries:SlidingMenu',
         ':libraries:UniversalImageLoader',
         ':libraries:WheelView'
+include ':libvlc',
+        ':api',
+        ':axmlrpc'
+
+project(':axmlrpc').projectDir = new File('vlc-android/java-libs/axmlrpc')
+project(':api').projectDir = new File('vlc-android/api')
+project(':libvlc').projectDir = new File('vlc-android/libvlc')

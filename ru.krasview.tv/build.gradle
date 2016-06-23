@@ -1,6 +1,9 @@
+apply plugin: 'com.android.application'
+
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
@@ -9,8 +12,6 @@ buildscript {
 }
 
 evaluationDependsOn(':libraries')
-
-apply plugin: 'com.android.application'
 
 android {
     buildToolsVersion = "23.0.3"
@@ -36,10 +37,14 @@ android {
 }
 
 dependencies {
+    compile project(':libvlc')
+    compile project(':api')
+    compile project(':axmlrpc')
     compile project(":libraries:ActionBarSherlock")
     compile project(":libraries:kvLib")
-    compile project(":libraries:kvLib")
+    compile project(":libraries:kvSecret")
     compile project(":libraries:SlidingMenu")
     compile project(":libraries:UniversalImageLoader")
     compile project(":libraries:WheelView")
+    testCompile 'junit:junit:4.12'
 }

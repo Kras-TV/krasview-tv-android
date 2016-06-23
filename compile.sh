@@ -10,11 +10,15 @@ checkfail()
 
 if [ ! -d "vlc-android" ]; then
     echo "VLC-android source not found, cloning"
-    git clone https://github.com/anutakay/vlc-android-for-krasview.git
+    git clone https://github.com/anutakay/vlc-android-for-krasview.git vlc-android
     checkfail "vlc source: git clone failed"
 fi
 
 cd vlc-android
 ./compile.sh -l
 cd ..
+
+./vlc-android/gradlew build
+
+
 

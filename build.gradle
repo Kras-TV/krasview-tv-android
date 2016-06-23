@@ -1,5 +1,24 @@
 evaluationDependsOn(':libraries')
 
-dependencies {
-    project(":ru.krasview.tv")
+buildscript {
+    repositories {
+        flatDir dirs: "vlc-android/gradle/plugins"
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.jakewharton.sdkmanager:sdk-manager-plugin:1.5.0-SNAPSHOT'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    buildToolsVersion = "23.0.3"
+    compileSdkVersion = 23
 }
