@@ -122,8 +122,8 @@ public abstract class KVSearchAndMenuActivity extends AppCompatActivity
     		menu.findItem(R.id.kv_search_item).setVisible(false);
     	}
     	
-    	editsearch = (EditText) menu.findItem(R.id.kv_search_item).getActionView();
-    	editsearch.addTextChangedListener(textWatcher);
+    	//editsearch = (EditText) menu.findItem(R.id.kv_search_item).getActionView();
+    	//editsearch.addTextChangedListener(textWatcher);
     /*
 		MenuItemCompat menuSearch = menu.findItem(R.id.kv_search_item);
     	menuSearch.setOnActionExpandListener(new MenuItemCompat.OnActionExpandListener(){

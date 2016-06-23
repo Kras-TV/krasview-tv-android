@@ -91,7 +91,7 @@
         <activity
             android:name=".MainActivity"
             android:label="" 
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="krasview.intent.action.LAUNCH"/>
