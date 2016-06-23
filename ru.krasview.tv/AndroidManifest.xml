@@ -33,9 +33,6 @@
         android:theme="@style/Theme.MyTheme"
         android:hardwareAccelerated="true" >
         
-        <!--  meta-data android:name="android.app.default_searchable"
-                       android:value="SearchActivity"/-->
-        
         <activity
             android:name="ru.krasview.tv.MainAuthActivity" 
             android:theme="@style/Theme.MyTheme.NoTitleBar"

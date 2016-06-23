@@ -1,20 +1,5 @@
 package ru.krasview.tv;
 
-import java.net.URLEncoder;
-import java.util.Map;
-
-import ru.krasview.kvlib.adapter.CombineSimpleAdapter;
-import ru.krasview.kvlib.indep.AuthAccount;
-import ru.krasview.kvlib.indep.HTTPClient;
-import ru.krasview.kvlib.indep.ListAccount;
-import ru.krasview.kvlib.indep.SearchAccount;
-import ru.krasview.secret.ApiConst;
-import ru.krasview.kvlib.indep.consts.AuthRequestConst;
-import ru.krasview.kvlib.indep.consts.TagConsts;
-import ru.krasview.kvlib.indep.consts.TypeConsts;
-import ru.krasview.kvlib.interfaces.FatalErrorExitListener;
-import ru.krasview.kvlib.widget.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,23 +7,36 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
-import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.MenuItem.OnActionExpandListener;
 import com.example.kvlib.R;
+import ru.krasview.kvlib.adapter.CombineSimpleAdapter;
+import ru.krasview.kvlib.indep.AuthAccount;
+import ru.krasview.kvlib.indep.HTTPClient;
+import ru.krasview.kvlib.indep.ListAccount;
+import ru.krasview.kvlib.indep.SearchAccount;
+import ru.krasview.kvlib.indep.consts.AuthRequestConst;
+import ru.krasview.kvlib.indep.consts.TagConsts;
+import ru.krasview.kvlib.indep.consts.TypeConsts;
+import ru.krasview.kvlib.interfaces.FatalErrorExitListener;
+import ru.krasview.kvlib.widget.List;
+import ru.krasview.secret.ApiConst;
 
-public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity 
+import java.net.URLEncoder;
+import java.util.Map;
+
+public abstract class KVSearchAndMenuActivity extends AppCompatActivity
 									 implements FatalErrorExitListener{
 	
 	AuthAccount account = AuthAccount.getInstance();
@@ -94,7 +92,7 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.kv_activity_animator, menu);
+		getMenuInflater().inflate(R.menu.kv_activity_animator, menu);
 		MenuItem loginItem = menu.findItem(R.id.kv_login_item );
 		String str = "";
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -126,19 +124,19 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
     	
     	editsearch = (EditText) menu.findItem(R.id.kv_search_item).getActionView();
     	editsearch.addTextChangedListener(textWatcher);
-    	
-    	MenuItem menuSearch = menu.findItem(R.id.kv_search_item);
-    	menuSearch.setOnActionExpandListener(new OnActionExpandListener(){
+    /*
+		MenuItemCompat menuSearch = menu.findItem(R.id.kv_search_item);
+    	menuSearch.setOnActionExpandListener(new MenuItemCompat.OnActionExpandListener(){
 
 			@Override
-			public boolean onMenuItemActionExpand(MenuItem item) {
+			public boolean onMenuItemActionExpand(MenuItemCompat item) {
 				setSearch(true);
 				editsearch.requestFocus();
 				return true;
 			}
 
 			@Override
-			public boolean onMenuItemActionCollapse(MenuItem item) {
+			public boolean onMenuItemActionCollapse(MenuItemCompat item) {
 				setSearch(false);
 				editsearch.setText("");
 	            editsearch.clearFocus();
@@ -146,16 +144,16 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(editsearch.getWindowToken(), 0);
                 return true;
-			}});
+			}});*/
     	
     	requestFocus();
     	
      return true;
     }
 
-
+/*
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItemCompat item) {
         int id = item.getItemId();
 		//switch (item.getItemId())
 		//{
@@ -183,7 +181,7 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
         }
 
         return super.onOptionsItemSelected(item);
-	}
+	}*/
 	
 	Map<String, Object> contextMenuMap;
 	CombineSimpleAdapter contextMenuAdapter;
@@ -280,5 +278,6 @@ public abstract class KVSearchAndMenuActivity extends SherlockFragmentActivity
 	  }
 	  return true;
 	}
+
 
 }
