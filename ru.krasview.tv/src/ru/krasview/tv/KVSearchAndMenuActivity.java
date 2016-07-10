@@ -38,13 +38,13 @@ import java.util.Map;
 
 public abstract class KVSearchAndMenuActivity extends AppCompatActivity
 									 implements FatalErrorExitListener{
-	
+
 	AuthAccount account = AuthAccount.getInstance();
-	
+
 	EditText editsearch;
 	SearchFragment searchFragment;
 	View searchHost;
-	
+
 	protected abstract void setSearch(boolean a);
 	protected abstract void exit();
 	protected abstract void home();
@@ -54,52 +54,48 @@ public abstract class KVSearchAndMenuActivity extends AppCompatActivity
 	@Override
 	public void onError() {
 	}
-	
+
 	@Override
-    public void onCreate(Bundle savedInstanceState){
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 	}
-	
-	protected void setSearchWidget(){
+
+	protected void setSearchWidget() {
 		//установка поисковых штук
 		searchHost = findViewById(R.id.search);
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		searchFragment = (SearchFragment) fragmentManager.findFragmentById(R.id.fragment1);
 		setSearch(false);
 	}
-	
-	private TextWatcher textWatcher = new TextWatcher(){
-		 @SuppressWarnings("deprecation")
+
+	private TextWatcher textWatcher = new TextWatcher() {
+		@SuppressWarnings("deprecation")
 		@Override
-	        public void afterTextChanged(Editable s){
-			 String search_string = URLEncoder.encode(s.toString());
-			 searchFragment.goSearch(search_string);
-		 }
+		public void afterTextChanged(Editable s) {
+			String search_string = URLEncoder.encode(s.toString());
+			searchFragment.goSearch(search_string);
+		}
 
 		@Override
 		public void beforeTextChanged(CharSequence s, int start, int count,
-				int after) {
-			
-		}
+		                              int after) {}
 
 		@Override
 		public void onTextChanged(CharSequence s, int start, int before,
-				int count) {
-			
-		}
-	 };
-	
+		                          int count) {}
+	};
+
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.kv_activity_animator, menu);
+
 		MenuItem loginItem = menu.findItem(R.id.kv_login_item );
 		String str = "";
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		int auth_type = prefs.getInt("pref_auth_type", AuthAccount.AUTH_TYPE_UNKNOWN);
 		String login = prefs.getString("pref_login", "");
 		String password = prefs.getString("pref_password", "");
-		switch(auth_type){
+		switch(auth_type) {
 		case AuthAccount.AUTH_TYPE_GUEST:
 			str = "Гость";
 			break;
@@ -111,11 +107,11 @@ public abstract class KVSearchAndMenuActivity extends AppCompatActivity
 			break;
 		}
 		String locLog = str;
-		if(login == null||password == null){
-			
-		}else{
+		if(login == null||password == null) {
+		} else {
 			locLog = (login.equals(""))?str:login;
 		}
+
     	loginItem.setTitle(locLog);
     	
     	if(ListAccount.fromLauncher){
@@ -128,6 +124,12 @@ public abstract class KVSearchAndMenuActivity extends AppCompatActivity
 		MenuItemCompat menuSearch = menu.findItem(R.id.kv_search_item);
     	menuSearch.setOnActionExpandListener(new MenuItemCompat.OnActionExpandListener(){
 
+
+		editsearch = (EditText) menu.findItem(R.id.kv_search_item).getActionView();
+		editsearch.addTextChangedListener(textWatcher);
+
+		MenuItem menuSearch = menu.findItem(R.id.kv_search_item);
+		menuSearch.setOnActionExpandListener(new OnActionExpandListener() {
 			@Override
 			public boolean onMenuItemActionExpand(MenuItemCompat item) {
 				setSearch(true);
@@ -183,100 +185,98 @@ public abstract class KVSearchAndMenuActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
 	}*/
 	
+
 	Map<String, Object> contextMenuMap;
 	CombineSimpleAdapter contextMenuAdapter;
-	
+
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
-	    ContextMenuInfo menuInfo) {
-		
-	    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-	    contextMenuAdapter = ((List)v).getAdapter();
-	    contextMenuMap = (Map<String, Object>) ((List)v).getAdapter().getItem(info.position);
-	    menu.setHeaderTitle((CharSequence)contextMenuMap.get("name"));
+	                                ContextMenuInfo menuInfo) {
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+		contextMenuAdapter = ((List)v).getAdapter();
+		contextMenuMap = (Map<String, Object>) ((List)v).getAdapter().getItem(info.position);
+		menu.setHeaderTitle((CharSequence)contextMenuMap.get("name"));
 
-	    if(contextMenuMap.get(TagConsts.TYPE) != null
-	    		&& contextMenuMap.get(TagConsts.TYPE).equals(TypeConsts.CHANNEL)){
-	    	if(!account.isTVAccount()){
+		if(contextMenuMap.get(TagConsts.TYPE) != null
+		        && contextMenuMap.get(TagConsts.TYPE).equals(TypeConsts.CHANNEL)) {
+			if(!account.isTVAccount()) {
 				return;
 			}
-	    	if(contextMenuMap.get("star").equals("0")){
-	    		menu.add(Menu.NONE, 0, 0, "добавить в избранное");
-	    	}else{
-	    		menu.add(Menu.NONE, 1, 0, "удалить из избранного");
-	    	}    	
-	    }
+			if(contextMenuMap.get("star").equals("0")) {
+				menu.add(Menu.NONE, 0, 0, "добавить в избранное");
+			} else {
+				menu.add(Menu.NONE, 1, 0, "удалить из избранного");
+			}
+		}
 	}
-	
+
 	@Override
 	public boolean onContextItemSelected(android.view.MenuItem item) {
 		int menuItemIndex = item.getItemId();
 		String[] menuItems = {"add", "remove"};
 		String menuItemName = menuItems[menuItemIndex];
-		if(menuItemName.equals("add")){
-			if(contextMenuMap != null){
-				AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>(){
-
+		if(menuItemName.equals("add")) {
+			if(contextMenuMap != null) {
+				AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
 					@Override
 					protected String doInBackground(String... arg0) {
 						String address = ApiConst.STAR;
 						String params = "channel_id=" + arg0[0];
 						return HTTPClient.getXML(address, params, AuthRequestConst.AUTH_TV);
-					}	
-				
-					@Override 
-					protected void onPostExecute(String result){
+					}
+
+					@Override
+					protected void onPostExecute(String result) {
 						String str;
-						if(result.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")){
+						if(result.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")) {
 							str = "Невозможно подключиться к серверу";
-						}else{
+						} else {
 							contextMenuMap.put("star", "1");
 							contextMenuAdapter.notifyDataSetChanged();
 							str = "Канал добавлен в избранное: " + contextMenuMap.get("name");
 						}
-					
-					Toast toast = Toast.makeText(getApplicationContext(), 
-							   str, Toast.LENGTH_SHORT); 
-							toast.show(); 
-					return;
-				}
-			  };
-			  task.execute((String)contextMenuMap.get("id"));
-		  }	  
-	  }else if(menuItemName.equals("remove")){
-		  if(contextMenuMap != null){
-			  AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>(){
 
-				@Override
-				protected String doInBackground(String... arg0) {
-					String address = ApiConst.UNSTAR;
-					String params = "channel_id=" + arg0[0];
-					return HTTPClient.getXML(address, params, AuthRequestConst.AUTH_TV);
-				}	
-				
-				@Override 
-				protected void onPostExecute(String result){
-					String str;
-					 if(result.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")){
-						str = "Невозможно подключиться к серверу";
-					}else{
-						contextMenuAdapter.getData().remove(contextMenuMap);
-						contextMenuAdapter.notifyDataSetChanged();
-						str = "Канал удален из избранного: " + contextMenuMap.get("name");
+						Toast toast = Toast.makeText(getApplicationContext(),
+						                             str, Toast.LENGTH_SHORT);
+						toast.show();
+						return;
 					}
-					
-					Toast toast = Toast.makeText(getApplicationContext(), 
-							   str, Toast.LENGTH_SHORT); 
-							toast.show(); 
-					return;
-				}
-			  };
-			  task.execute((String)contextMenuMap.get("id"));
-		  }	
-	  }
-	  return true;
+				};
+				task.execute((String)contextMenuMap.get("id"));
+			}
+		} else if(menuItemName.equals("remove")) {
+			if(contextMenuMap != null) {
+				AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
+					@Override
+					protected String doInBackground(String... arg0) {
+						String address = ApiConst.UNSTAR;
+						String params = "channel_id=" + arg0[0];
+						return HTTPClient.getXML(address, params, AuthRequestConst.AUTH_TV);
+					}
+
+					@Override
+					protected void onPostExecute(String result) {
+						String str;
+						if(result.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")) {
+							str = "Невозможно подключиться к серверу";
+						} else {
+							contextMenuAdapter.getData().remove(contextMenuMap);
+							contextMenuAdapter.notifyDataSetChanged();
+							str = "Канал удален из избранного: " + contextMenuMap.get("name");
+						}
+
+						Toast toast = Toast.makeText(getApplicationContext(),
+						                             str, Toast.LENGTH_SHORT);
+						toast.show();
+						return;
+					}
+				};
+				task.execute((String)contextMenuMap.get("id"));
+			}
+		}
+		return true;
 	}
 
 

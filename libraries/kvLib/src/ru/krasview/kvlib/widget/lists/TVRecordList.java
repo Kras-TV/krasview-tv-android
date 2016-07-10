@@ -14,20 +14,17 @@ import ru.krasview.kvlib.indep.Parser;
 
 import android.content.Context;
 
-public class TVRecordList extends TVList 
-{
+public class TVRecordList extends TVList {
 	//не убирать, перекрывает непустую функцию
 	@Override
 	public void setConstData(){
-		
 	}
 
-	public TVRecordList(Context context) 
-	{
+	public TVRecordList(Context context) {
 		super(context);
 	}
 	
-	protected int getAuthRequest(){
+	protected int getAuthRequest() {
 		return AuthRequestConst.AUTH_TV;
 	}
 	
@@ -38,8 +35,7 @@ public class TVRecordList extends TVList
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public void parseData(String doc, LoadDataToGUITask task) 
-	{
+	public void parseData(String doc, LoadDataToGUITask task) {
 		Document mDocument;
 		mDocument = Parser.XMLfromString(doc);
 		if(mDocument == null){
@@ -56,7 +52,7 @@ public class TVRecordList extends TVList
 			task.onStep(m);
 			return;
 		}
-		for (int nodeIndex = 0; nodeIndex < numOfChannel; nodeIndex++){
+		for (int nodeIndex = 0; nodeIndex < numOfChannel; nodeIndex++) {
 			Node locNode = nListChannel.item(nodeIndex);
 			m = new HashMap<String, Object>();
 			m.put("id", Parser.getValue("id", locNode));
@@ -66,7 +62,7 @@ public class TVRecordList extends TVList
 			m.put("state", Parser.getValue("state", locNode));
 			m.put("star", Parser.getValue("star", locNode));
 			m.put("type", "channel_date_list" );
-			if(task.isCancelled()){
+			if(task.isCancelled()) {
 				return;
 			}
 			task.onStep(m);

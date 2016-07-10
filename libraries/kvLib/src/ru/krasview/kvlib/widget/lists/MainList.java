@@ -8,10 +8,8 @@ import ru.krasview.kvlib.widget.List;
 
 import android.content.Context;
 
-public class MainList extends List 
-{
-	public MainList(Context context) 
-	{
+public class MainList extends List {
+	public MainList(Context context) {
 		super(context, null);
 	}
 
@@ -25,7 +23,7 @@ public class MainList extends List
 			m.put("name", "Я смотрю");
 			data.add(m);
 		}	
-		if(account.isTVAccount()){	
+		if(account.isTVAccount()){
 			m = new HashMap<String, Object>();
 			m.put("type", TypeConsts.TV);
 			m.put("name", "Телевидение");
@@ -37,16 +35,14 @@ public class MainList extends List
 	    m.put("name", "Фильмы");
 	    data.add(m);
 
-	    m = new HashMap<String, Object>();
-	    m.put("type", TypeConsts.ALL_SHOW);
-	    m.put("name", "Сериалы");
-	    data.add(m);
-	    
-	    m = new HashMap<String, Object>();
-	    m.put("type", TypeConsts.ALL_ANIME);
-	    m.put("name", "Аниме");
-	    data.add(m);
-	    
-	}
+		m = new HashMap<String, Object>();
+		m.put("type", TypeConsts.ALL_SHOW);
+		m.put("name", "Сериалы");
+		data.add(m);
 
+		m = new HashMap<String, Object>();
+		m.put("type", TypeConsts.ALL_ANIME);
+		m.put("name", "Аниме");
+		data.add(m);
+	}
 }

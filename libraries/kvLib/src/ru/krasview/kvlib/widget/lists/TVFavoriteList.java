@@ -14,13 +14,12 @@ import ru.krasview.kvlib.indep.Parser;
 
 import android.content.Context;
 
-public class TVFavoriteList extends TVList 
-{
-	public TVFavoriteList(Context context){
+public class TVFavoriteList extends TVList {
+	public TVFavoriteList(Context context) {
 		super(context);
 	}
 
-	protected int getAuthRequest(){
+	protected int getAuthRequest() {
 		return AuthRequestConst.AUTH_TV;
 	}
 	
@@ -28,20 +27,19 @@ public class TVFavoriteList extends TVList
 	protected String getApiAddress() {
 		return ApiConst.TV;
 	}
-	
+
 	@Override
 	public void setConstData(){
 		Map<String, Object> m;
-	    m = new HashMap<String, Object>();
+		m = new HashMap<String, Object>();
 		m.put("type", "record_favorite");
-	    m.put("name", "Записи");
-	    data.add(m);
+		m.put("name", "Записи");
+		data.add(m);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public void parseData(String doc, LoadDataToGUITask task) 
-	{
+	public void parseData(String doc, LoadDataToGUITask task) {
 		Document mDocument;
 		mDocument = Parser.XMLfromString(doc);
 		if(mDocument == null){
@@ -78,7 +76,7 @@ public class TVFavoriteList extends TVList
 				task.onStep(m);
 			}
 		}
-		
+
 		if(num == 0){
 			m = new HashMap<String, Object>();
 			m.put("name", "нет записей");

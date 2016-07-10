@@ -19,7 +19,6 @@ import android.text.Html;
 import android.util.Log;
 
 public class RecordList extends List {
-
 	public RecordList(Context context, Map<String, Object> map) {
 		super(context, map);
 	}
@@ -53,7 +52,7 @@ public class RecordList extends List {
 			DateFormat df = new SimpleDateFormat("HH:mm");
 			String reportDate = df.format(date);
 			m.put("name", reportDate + " "+ Html.fromHtml(Parser.getValue("name", locNode)));
-			m.put("uri", Parser.getValue("record", locNode));					
+			m.put("uri", Parser.getValue("record", locNode));
 			if(task.isCancelled()){
 				return;
 			}
@@ -62,7 +61,7 @@ public class RecordList extends List {
 			}else{
 				m.put("type", "tv_record");
 				task.onStep(m);
-			}				
+			}
 		}
 		if(data.size() == 0){
 			m = new HashMap<String, Object>();

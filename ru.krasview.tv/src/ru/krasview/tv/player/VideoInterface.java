@@ -5,7 +5,6 @@ import java.util.Map;
 import android.media.MediaPlayer;
 
 public interface VideoInterface {
-	
 	public void setVideoAndStart(String address);
 	public void stop();
 	public void pause();
@@ -27,8 +26,7 @@ public interface VideoInterface {
 	public int getSpuTracksCount();
 	public void setOnCompletionListener( MediaPlayer.OnCompletionListener listener);
 	public void setOnErrorListener (MediaPlayer.OnErrorListener l);
-	
+
 	public int changeOrientation();
 	public void end();
-
 }

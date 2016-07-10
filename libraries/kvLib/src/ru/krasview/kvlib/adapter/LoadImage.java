@@ -8,14 +8,12 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-class LoadImage extends AsyncTask<String, Void, Bitmap> 
-{
+class LoadImage extends AsyncTask<String, Void, Bitmap> {
 	ImageView mImage;
 	Map<String, Object> mMap;
 	CombineSimpleAdapter mAdapter;
-	
-	LoadImage(CombineSimpleAdapter adapter, ImageView image, Map<String, Object> hm)
-	{
+
+	LoadImage(CombineSimpleAdapter adapter, ImageView image, Map<String, Object> hm) {
 		super();
 		mImage = image;
 		mMap = hm;
@@ -23,15 +21,13 @@ class LoadImage extends AsyncTask<String, Void, Bitmap>
 	}
 
 	@Override
-	protected Bitmap doInBackground(String... arg0) 
-	{
+	protected Bitmap doInBackground(String... arg0) {
 		return HTTPClient.getImage(arg0[0]);
 	}
-	
-	@Override 
-	protected void onPostExecute(Bitmap bmp)
-	{
+
+	@Override
+	protected void onPostExecute(Bitmap bmp) {
 		mMap.put("image", bmp);
 		mAdapter.notifyDataSetChanged();
-	} 
+	}
 }

@@ -23,7 +23,6 @@ import java.util.Locale;
 
 import org.videolan1.vlc.gui.audio.AudioUtil;
 
-import com.nostra13.example.universalimageloader.Constants.Config;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -40,24 +39,23 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class VLCApplication extends Application {
-    public final static String TAG = "VLC/VLCApplication";
-    private static VLCApplication instance;
-   
-   // public static Adapter adapterForActivity;
+	public final static String TAG = "VLC/VLCApplication";
+	private static VLCApplication instance;
 
-    public final static String SLEEP_INTENT = "org.videolan.vlc.SleepIntent";
+	// public static Adapter adapterForActivity;
 
-    @SuppressWarnings("unused")
+	public final static String SLEEP_INTENT = "org.videolan.vlc.SleepIntent";
+
+	@SuppressWarnings("unused")
 	@Override
-    public void onCreate() {
-    	
-    	if (Config.DEVELOPER_MODE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+	public void onCreate() {
+	/*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
 			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
-		}
+		}*/
 
-        super.onCreate();
-        
+	super.onCreate();
+
         initImageLoader(getApplicationContext());
 
         // Are we using advanced debugging - locale?
@@ -98,7 +96,7 @@ public class VLCApplication extends Application {
         // Prepare cache folder constants
         AudioUtil.prepareCacheFolder(this);
     }
-    
+
     public static void initImageLoader(Context context) {
 		// This configuration tuning is custom. You can tune every option, you may tune some of them,
 		// or you can create default configuration by
@@ -129,17 +127,15 @@ public class VLCApplication extends Application {
     /**
      * @return the main context of the Application
      */
-    public static Context getAppContext()
-    {
-        return instance;
-    }
+	public static Context getAppContext() {
+		return instance;
+	}
 
     /**
      * @return the main resources from the Application
      */
-    public static Resources getAppResources()
-    {
-        if(instance == null) return null;
-        return instance.getResources();
-    }
+	public static Resources getAppResources() {
+		if(instance == null) return null;
+		return instance.getResources();
+	}
 }

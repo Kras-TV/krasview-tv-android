@@ -15,14 +15,13 @@ import ru.krasview.kvlib.widget.List;
 import android.content.Context;
 
 public class SeasonList extends List{
-	
 	public SeasonList(Context context, Map<String, Object> map){
 		super(context, map);
 	}
-	
+
 	@Override
 	protected String getApiAddress() {
-		return ApiConst.ALL_SEASONS +"?id=" + getMap().get("id");	
+		return ApiConst.ALL_SEASONS +"?id=" + getMap().get("id");
 	}
 
 	@Override
@@ -31,23 +30,23 @@ public class SeasonList extends List{
 		if(account.isKrasviewAccount()){
 			m = new HashMap<String, Object>();
 			m.put("type", "new_series");
-		    m.put("name", "Новые серии");
-		    m.put("id", getMap().get("id"));
-		    data.add(m);
+			m.put("name", "Новые серии");
+			m.put("id", getMap().get("id"));
+			data.add(m);
 			}
 			m = new HashMap<String, Object>();
 			m.put("type", "series_light");
-		    m.put("name", "Описание");
-		    m.put("id", getMap().get("id"));
-		    m.put("img_uri", (String)getMap().get("img_uri"));
-		    m.put("description", (String)getMap().get("description"));
-		    m.put("show_name", getMap().get("name"));
-		    data.add(m);
+			m.put("name", "Описание");
+			m.put("id", getMap().get("id"));
+			m.put("img_uri", (String)getMap().get("img_uri"));
+			m.put("description", (String)getMap().get("description"));
+			m.put("show_name", getMap().get("name"));
+			data.add(m);
 			m = new HashMap<String, Object>();
 			m.put("type", "all_series");
-		    m.put("name", "Все серии");
-		    m.put("id", getMap().get("id"));
-		    data.add(m);
+			m.put("name", "Все серии");
+			m.put("id", getMap().get("id"));
+			data.add(m);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -73,6 +72,5 @@ public class SeasonList extends List{
 			}
 			task.onStep(m);
 		}
-		
 	}
 }

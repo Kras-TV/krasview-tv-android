@@ -16,31 +16,27 @@ import ru.krasview.kvlib.widget.List;
 import android.content.Context;
 import android.text.Html;
 
-public class UserShowList extends List 
-{	
+public class UserShowList extends List {
 	String mSection;
 
-	public UserShowList(Context context) 
-	{
+	public UserShowList(Context context) {
 		super(context, null);
 	}
-	
-	protected UserShowList(Context context, Map<String, Object> map) 
-	{
+
+	protected UserShowList(Context context, Map<String, Object> map) {
 		super(context, map);
 	}
-	
-	public UserShowList(Context context, String section) 
-	{
+
+	public UserShowList(Context context, String section) {
 		super(context, null);
 		mSection = section;
 	}
-	
+
 	@Override
 	protected int getAuthRequest(){
 		return AuthRequestConst.AUTH_KRASVIEW;
 	}
-	
+
 	@Override
 	protected String getApiAddress() {
 		return ApiConst.USER;
@@ -99,7 +95,7 @@ public class UserShowList extends List
 				}
 				task.onStep(m);
 				empty = false;
-			}					
+			}
 		}
 		if(empty == true){
 			m = new HashMap<String, Object>();
@@ -107,6 +103,5 @@ public class UserShowList extends List
 			m.put("type", null );
 			task.onStep(m);
 		}
-		
 	}
 }

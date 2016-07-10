@@ -16,11 +16,10 @@ import android.content.Context;
 import android.text.Html;
 
 public class AllSeriesList extends List {
-	
 	public AllSeriesList(Context context, Map<String, Object> map){
 		super(context, map);
 	}
-	
+
 	@Override
 	protected String getApiAddress() {
 		return ApiConst.SHOW +"?"+"id=" + getMap().get("id");
@@ -52,6 +51,5 @@ public class AllSeriesList extends List {
 			}
 			task.onStep(m);
 		}
-		
 	}
 }

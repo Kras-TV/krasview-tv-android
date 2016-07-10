@@ -14,23 +14,20 @@ import ru.krasview.secret.ApiConst;
 import android.os.AsyncTask;
 import android.util.Log;
 
-class LoadCurrentProgram extends AsyncTask<String, Void, Map<String, Object>>
-{
+class LoadCurrentProgram extends AsyncTask<String, Void, Map<String, Object>> {
 	Map<String, Object> mMap;
 	CombineSimpleAdapter mAdapter;
-	LoadCurrentProgram(CombineSimpleAdapter adapter, Map<String, Object> hm)
-	{
+	LoadCurrentProgram(CombineSimpleAdapter adapter, Map<String, Object> hm) {
 		super();
 		mMap = hm;
 		mAdapter = adapter;
 	}
-	
+
 	@Override
-	protected Map<String, Object> doInBackground(String... arg0) 
-	{
+	protected Map<String, Object> doInBackground(String... arg0) {
 		String str = HTTPClient.getXML(ApiConst.RECORD, "id="+mMap.get("id"), AuthRequestConst.AUTH_NONE);
 		Map<String, Object> m;
-		if(str.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")){				
+		if(str.equals("<results status=\"error\"><msg>Can't connect to server</msg></results>")) {
 			m = new HashMap<String, Object>();
 			m.put("name", "<невозможно подключиться к серверу>");
 			m.put("progress", Integer.parseInt("0"));
@@ -65,17 +62,15 @@ class LoadCurrentProgram extends AsyncTask<String, Void, Map<String, Object>>
 		}
 		return m;
 	}
-	
-	@Override 
-	protected void onPostExecute(Map<String, Object> result)
-	{
-		if(result == null){
+
+	@Override
+	protected void onPostExecute(Map<String, Object> result) {
+		if(result == null) {
 			return;
 		}
-		mMap.put("current_program_name", (CharSequence) result.get("name") );
+		mMap.put("current_program_name", (CharSequence) result.get("name"));
 		mMap.put("current_program_progress", (Integer) result.get("progress"));
 		mMap.put("current_program_time", (CharSequence)result.get("time"));
 		mAdapter.notifyDataSetChanged();
 	}
-	
 }

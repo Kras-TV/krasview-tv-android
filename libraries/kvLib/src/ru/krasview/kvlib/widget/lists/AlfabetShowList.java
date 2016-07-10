@@ -8,19 +8,18 @@ import ru.krasview.kvlib.widget.List;
 import android.content.Context;
 
 public class AlfabetShowList extends List{
-	
 	private String abc = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" 
 			+ "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	public AlfabetShowList(Context context){
 		super(context, null);
 	}
-	
+
 	protected void setType(Map<String, Object> map)
 	{
 		map.put("type", "letter_series");
 	}
-	
+
 	@Override
 	public void setConstData() 
 	{

@@ -13,10 +13,9 @@ import android.view.View;
 import android.widget.CheckBox;
 
 public class GuestAuthActivity extends Activity {
-	
 	CheckBox box;//чек бокс "Не показывать больше это окно"
 	//"pref_guest_check" - booleans
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -24,7 +23,7 @@ public class GuestAuthActivity extends Activity {
 		box = (CheckBox)findViewById(R.id.checkBox1);
 		enter();
 	}
-	
+
 	private void enter(){
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		prefs.edit().putString("pref_login", "")
@@ -36,7 +35,7 @@ public class GuestAuthActivity extends Activity {
 		this.setResult(RESULT_OK);
 		this.finish();
 	}
-	
+
 	public void onClick(View v){
 		switch(v.getId()){
 		case R.id.kv_auth_guest_button:
@@ -50,5 +49,4 @@ public class GuestAuthActivity extends Activity {
 			break;
 		}
 	}
-
 }
