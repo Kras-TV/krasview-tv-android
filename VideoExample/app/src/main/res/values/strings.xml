@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">VideoExample</string>
+    <string name="chroma_format_default" translatable="false">RV32</string>
+</resources>

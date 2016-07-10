@@ -1,6 +1,5 @@
 include ':ru.krasview.tv'
 include ':libraries',
-        ':libraries:ActionBarSherlock',
         ':libraries:kvLib',
         ':libraries:kvSecret',
         ':libraries:SlidingMenu',
@@ -13,3 +12,4 @@ include ':libvlc',
 project(':axmlrpc').projectDir = new File('vlc-android/java-libs/axmlrpc')
 project(':api').projectDir = new File('vlc-android/api')
 project(':libvlc').projectDir = new File('vlc-android/libvlc')
+

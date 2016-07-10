@@ -1,0 +1,7 @@
+include ':app'
+include ':axmlrpc', ':api', ':libvlc'
+
+project(':axmlrpc').projectDir = new File('../vlc-android/java-libs/axmlrpc')
+project(':api').projectDir = new File('../vlc-android/api')
+project(':libvlc').projectDir = new File('../vlc-android/libvlc')
+
