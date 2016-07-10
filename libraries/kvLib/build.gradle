@@ -1,6 +1,6 @@
 dependencies {
     compile project(":libraries:kvSecret")
-    compile project(":libraries:UniversalImageLoader")
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
 
 android{

@@ -1,12 +1,5 @@
 package ru.krasview.tv.player;
 
-import java.util.Map;
-
-import org.videolan1.vlc.Util;
-
-import ru.krasview.kvlib.indep.ListAccount;
-
-import com.example.kvlib.R;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,14 +13,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.SurfaceView;
-import android.view.View;
-import android.view.WindowManager;
+import android.view.*;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.example.kvlib.R;
+import org.videolan1.vlc.Util;
+import ru.krasview.kvlib.indep.ListAccount;
+
+import java.util.Map;
 
 public class VideoActivity extends Activity {
 	RelativeLayout mFrame;
@@ -338,10 +332,6 @@ public class VideoActivity extends Activity {
         mHandler.removeMessages(FADE_OUT_INFO);
         mHandler.removeMessages(FADE_OUT);
     }
-	
-	private void hideInfo(){
-		mInfo.setVisibility(View.GONE);
-	}
 
 	void hideInfo() {
 		mInfo.setVisibility(View.GONE);

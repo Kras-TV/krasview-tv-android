@@ -3,7 +3,6 @@ include ':libraries',
         ':libraries:kvLib',
         ':libraries:kvSecret',
         ':libraries:SlidingMenu',
-        ':libraries:UniversalImageLoader',
         ':libraries:WheelView'
 include ':libvlc',
         ':api',
