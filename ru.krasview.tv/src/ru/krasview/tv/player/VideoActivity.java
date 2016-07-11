@@ -84,9 +84,9 @@ public class VideoActivity extends Activity {
 
 		if(mVideoSurface == null) {
 			if(pref_video_player.equals("VLC")) {
-				mVideoSurface = new VLCView(this);
+				mVideoSurface = new VideoViewVLC(this);
 			} else {
-				mVideoSurface = new AVideoView(this);
+				mVideoSurface = new VideoViewVLC(this);
 			}
 			mFrame.addView(mVideoSurface);
 		}

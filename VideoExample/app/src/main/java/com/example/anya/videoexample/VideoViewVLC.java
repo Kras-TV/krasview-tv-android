@@ -1,23 +1,21 @@
-package ru.krasview.tv.player;
+package com.example.anya.videoexample;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.*;
+import android.view.Gravity;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 import org.videolan.libvlc.IVLCVout;
 import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.Media;
 
 import java.lang.ref.WeakReference;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -26,53 +24,22 @@ import java.util.Map;
  */
 public class VideoViewVLC extends SurfaceView implements IVLCVout.Callback, VideoInterface {
 
-    public final static String TAG = "Krasview/VideoViewVLC";
+    public final static String TAG = "LibVLCAndroidSample/VideoViewVLC";
 
     private SurfaceView mSurface;
     private SurfaceHolder holder;
 
     private LibVLC libvlc;
     private org.videolan.libvlc.MediaPlayer mMediaPlayer = null;
-    private int mVideoWidth = 100;
-    private int mVideoHeight = 100;
-
-    TVController mTVController;
-    VideoController mVideoController;
-    Map<String, Object> mMap;
-
-    int dw = 1;
-    int dh = 1;
-
-    boolean stopped = false;
-
-    private static final int SHOW_PROGRESS = 2;
-    private static final int SURFACE_SIZE = 3;
-
-    private static final int SURFACE_BEST_FIT = 0;
-    private static final int SURFACE_FIT_HORIZONTAL = 1;
-    private static final int SURFACE_FIT_VERTICAL = 2;
-    private static final int SURFACE_FILL = 3;
-    private static final int SURFACE_16_9 = 4;
-    private static final int SURFACE_4_3 = 5;
-    private static final int SURFACE_ORIGINAL = 6;
-    private static final int SURFACE_FROM_SETTINGS = 7;
-    private int mCurrentSize = SURFACE_FROM_SETTINGS;
-
-    String pref_aspect_ratio = "default";
-    String pref_aspect_ratio_video = "default";
+    private int mVideoWidth;
+    private int mVideoHeight;
 
 
     public VideoViewVLC(Context context) {
         super(context);
-       init();
-    }
-
-    private void init() {
         mSurface = this;
         holder = mSurface.getHolder();
-
-        this.setFocusable(false);
-        this.setClickable(false);
+        mSurface.setLayoutParams(new FrameLayout.LayoutParams(mVideoWidth, mVideoHeight));
     }
 
     @Override
@@ -82,65 +49,42 @@ public class VideoViewVLC extends SurfaceView implements IVLCVout.Callback, Vide
 
     @Override
     public void stop() {
-        if(mMediaPlayer == null) {
-            return;
-        }
-        mMediaPlayer.stop();
-        stopped = true;
+
     }
 
     @Override
     public void pause() {
-        if(mMediaPlayer == null) {
-            return;
-        }
-        mMediaPlayer.pause();
+
     }
 
     @Override
     public void play() {
-        if(mMediaPlayer == null) {
-            return;
-        }
-        mMediaPlayer.play();
+
     }
 
     @Override
-    public void setTVController(TVController tc) {
-        mTVController = tc;
-        mTVController.setVideo(this);
+    public void setTVController(Object tc) {
+
     }
 
     @Override
-    public void setVideoController(VideoController vc) {
-        mVideoController = vc;
-        mVideoController.setVideo(this);
+    public void setVideoController(Object vc) {
+
     }
 
     @Override
     public void setMap(Map<String, Object> map) {
-        mMap = map;
-        if(mTVController != null) {
-            mTVController.setMap(mMap);
-        }
-        if(mVideoController != null) {
-            mVideoController.setMap(mMap);
-        }
-        getPrefs();
-        stopped = false;
+
     }
 
     @Override
     public boolean isPlaying() {
-
-        return mMediaPlayer.isPlaying();
+        return false;
     }
 
     @Override
     public boolean showOverlay() {
-        mHandler.removeMessages(SHOW_PROGRESS);
-        mHandler.sendEmptyMessage(SHOW_PROGRESS);
-        return true;
+        return false;
     }
 
     @Override
@@ -150,34 +94,22 @@ public class VideoViewVLC extends SurfaceView implements IVLCVout.Callback, Vide
 
     @Override
     public int getProgress() {
-        if(mMediaPlayer == null) {
-            return 0;
-        }
-        return (int) mMediaPlayer.getTime();
+        return 0;
     }
 
     @Override
     public int getLeight() {
-        if(mMediaPlayer == null) {
-            return 0;
-        }
-        return (int) mMediaPlayer.getLength();
+        return 0;
     }
 
     @Override
     public int getTime() {
-        if(mMediaPlayer == null) {
-            return 0;
-        }
-        return (int) mMediaPlayer.getTime();
+        return 0;
     }
 
     @Override
     public void setTime(int time) {
-        if(mMediaPlayer == null) {
-            return;
-        }
-        mMediaPlayer.setTime(time);
+
     }
 
     @Override
@@ -223,22 +155,14 @@ public class VideoViewVLC extends SurfaceView implements IVLCVout.Callback, Vide
 
     @Override
     public void end() {
-        // TODO Auto-generated method stub
-        if(mTVController != null) {
-            mTVController.end();
-        }
-        if(mVideoController != null) {
-            mVideoController.end();
-        }
 
-        mHandler.removeMessages(SHOW_PROGRESS);
     }
+
     /*************
      * Player
      *************/
 
     private void createPlayer(String media) {
-        Log.d("MyVLC", "CreatePlayer " + media);
         releasePlayer();
         try {
             if (media.toString().length() > 0) {
@@ -269,14 +193,7 @@ public class VideoViewVLC extends SurfaceView implements IVLCVout.Callback, Vide
             //vout.setSubtitlesView(mSurfaceSubtitles);
             vout.addCallback(this);
             vout.attachViews();
-
-
-            URL url = new URL(media);
-            Uri uri = Uri.parse(media);
-
-            Log.d("MyVLC", "uri scheme " + uri.getScheme());
-
-            Media m = new Media(libvlc, uri);
+            Media m = new Media(libvlc, media);
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
         } catch (Exception e) {
@@ -392,53 +309,5 @@ public class VideoViewVLC extends SurfaceView implements IVLCVout.Callback, Vide
                     break;
             }
         }
-    }
-
-    private void getPrefs() {
-        SharedPreferences prefs;
-        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        pref_aspect_ratio = prefs.getString("aspect_ratio", "default");
-        if(mMap.get("type").equals("video")) {
-
-            pref_aspect_ratio_video = prefs.getString("aspect_ratio_video", "default");
-        } else {
-            pref_aspect_ratio_video = prefs.getString("aspect_ratio_tv", "default");
-
-        }
-    }
-
-    public Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case SURFACE_SIZE:
-                    //changeSurfaceSize();
-                    break;
-                case SHOW_PROGRESS:
-                    setOverlayProgress();
-                    break;
-            }
-        }
-    };
-
-    private void setOverlayProgress() {
-        if(mVideoController != null) {
-            mVideoController.showProgress();
-        }
-        mHandler.removeMessages(SHOW_PROGRESS);
-        Message msg = mHandler.obtainMessage(SHOW_PROGRESS);
-        mHandler.sendMessageDelayed(msg, 1000);
-        return;
-    }
-
-    @Override
-    public boolean dispatchKeyEvent (KeyEvent event) {
-        if(mTVController!=null) {
-            return mTVController.dispatchKeyEvent(event);
-        }
-        if(mVideoController!=null) {
-            return mVideoController.dispatchKeyEvent(event);
-        }
-        return true;
     }
 }
